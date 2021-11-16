@@ -2,10 +2,12 @@
   "name": "ium-app",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix",
+    "pre-commit": "npx lint-staged && next lint --fix && git add -A ."
   },
   "dependencies": {
     "next": "12.0.4",
@@ -17,6 +19,13 @@
     "@types/react": "17.0.35",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.0.2",
+    "prettier": "2.4.1",
     "typescript": "4.4.4"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "prettier --write --ignore-unknown"
   }
 }
