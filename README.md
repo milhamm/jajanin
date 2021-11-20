@@ -1,8 +1,48 @@
 # Informatika Untuk Masyarakat App
 
+Matkul 1 SKS gan 😆
+
+## Team Member
+
+1. [RIDHO NOBELINO SABILILLAH](https://github.com/ridhodori)
+2. [MUHAMMAD ILHAM MUBARAK](https://github.com/milhamm)
+3. [MUHAMMAD FARHAN AKBAR](https://github.com/farhanakbar8)
+4. [MUHAMMAD FURQON FAHLEVI](https://github.com/furqonfahlevi)
+5. [RISYAD FAISAL HADI](https://github.com/RisyadFaisalH)
+6. [HILAL RAMADHAN UTOMO](https://github.com/hilaler)
+
+## Tech Stack
+
+* Frontend  : [React](https://reactjs.org/)
+* Backend   : [Next.js](https://nextjs.org/)
+* ORM       : [Prisma](https://prisma.io/)
+* CSS       : [Tailwind](https://tailwindcss.com/) 
+
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+# or
+npm ci
+```
+
+Configure your .env variables:
+
+```bash
+cp .env.example .env
+```
+
+Run database migrations: 
+
+```bash
+npx prisma migrate dev
+
+npx prisma generate
+```
+
+Run development server: 
 
 ```bash
 npm run dev
