@@ -1,27 +1,41 @@
+import { User } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
+import { genericException, genericResponse } from "../../../helper/response";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    const data = req.body;
-    try {
-      const user = await prisma.user.findFirst({
-        where: {
-          email: data.email,
-          password: data.password,
-        },
-      });
-      res.send({
-        success: true,
-        code: 200,
-        data: user,
-      });
-    } catch (error) {
-      errorHandler(error, req, res);
+  switch (req.method) {
+    case "POST": {
+      const { email, password } = req.body;
+
+      try {
+        const user: User | null = await prisma.user.findFirst({
+          where: {
+            email: email,
+            password: password,
+          },
+        });
+
+        if (!user) {
+          res
+            .status(401)
+            .json(genericException(false, 401, "Email or Password is wrong"));
+        }
+
+        res.send(genericResponse<User | null>(true, 200, user));
+      } catch (error) {
+        errorHandler(error, req, res);
+      }
+      break;
     }
+    default:
+      res
+        .status(404)
+        .json(genericException<string>(false, 404, "Method Not Allowed"));
+      break;
   }
 }
