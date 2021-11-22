@@ -20,6 +20,7 @@ export default async function handler(
         data: place,
       });
     } catch (error) {
+      // console.log(error);
       errorHandler(error, req, res);
     }
   } else if (req.method === "GET") {
