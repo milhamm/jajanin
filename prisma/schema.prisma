@@ -64,19 +64,17 @@ model Store {
   id              String  @id @default(cuid())
   owner_id        String? 
   owner           User?   @relation(fields: [owner_id], references: [id], onDelete: Cascade)
-  store_name      String  
-  phone_number    String
+  store_name      String  @unique
+  phone_number    String  @unique
   address         String
   average_cost    Int
   longitude       Int
   latitude        Int
-  slug            String
+  slug            String  @unique
   more_info       String
   reviews         Review[]
   photos          Photo[]
   menus           Menu[]
-
-  @@unique([slug, phone_number])
 }
 
 model Review {
