@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
+import validateEmail from "../../../helper/validateEmail";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,6 +9,22 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const data = req.body;
+    if (!validateEmail(data.email)) {
+      res.status(400).json({
+        success: false,
+        code: 400,
+        error: "Invalid Email",
+      });
+    }
+
+    if (!(data.name && data.phone_number)) {
+      res.status(400).json({
+        success: false,
+        code: 400,
+        error: "Name or Phone Number not exists",
+      });
+    }
+
     try {
       const user = await prisma.user.create({
         data: {
