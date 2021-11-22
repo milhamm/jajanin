@@ -20,6 +20,12 @@ export default async function handler(
           },
         });
 
+        if (!user) {
+          res
+            .status(401)
+            .json(genericException(false, 401, "Email or Password is wrong"));
+        }
+
         res.send(genericResponse<User | null>(true, 200, user));
       } catch (error) {
         errorHandler(error, req, res);
