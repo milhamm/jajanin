@@ -20,24 +20,20 @@ export default async function handler(
           },
         });
 
-        if (!user) {
-          res
-            .status(401)
-            .json(genericException(false, 401, "Email or Password is wrong"));
-        }
-
         if (user?.password) {
           const validPass = await bcrypt.compare(password, user.password);
           if (validPass) {
-            res.status(200).json({ message: "Valid Password" });
+            res.send(genericResponse<User | null>(true, 200, user));
           } else {
-            res.status(400).json({ message: "Invalid Password" });
+            res
+              .status(401)
+              .json(genericException(false, 401, "Email or Password is wrong"));
           }
         } else {
-          res.status(400).json({ message: "User does not exist" });
+          res
+            .status(404)
+            .json(genericException(false, 404, "User does not exist"));
         }
-
-        res.send(genericResponse<User | null>(true, 200, user));
       } catch (error) {
         errorHandler(error, req, res);
       }
