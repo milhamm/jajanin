@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
 import validateEmail from "../../../helper/validateEmail";
+import bcrypt from "bcrypt";
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,6 +25,9 @@ export default async function handler(
         error: "Name or Phone Number not exists",
       });
     }
+
+    const salt = await bcrypt.genSalt(10);
+    data.password = await bcrypt.hash(data.password, salt);
 
     try {
       const user = await prisma.user.create({
