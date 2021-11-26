@@ -2,6 +2,7 @@ import { User } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
+import bcrypt from "bcrypt";
 import { genericException, genericResponse } from "../../../helper/response";
 
 export default async function handler(
@@ -16,17 +17,23 @@ export default async function handler(
         const user: User | null = await prisma.user.findFirst({
           where: {
             email: email,
-            password: password,
           },
         });
 
-        if (!user) {
+        if (user?.password) {
+          const validPass = await bcrypt.compare(password, user.password);
+          if (validPass) {
+            res.send(genericResponse<User | null>(true, 200, user));
+          } else {
+            res
+              .status(401)
+              .json(genericException(false, 401, "Email or Password is wrong"));
+          }
+        } else {
           res
-            .status(401)
-            .json(genericException(false, 401, "Email or Password is wrong"));
+            .status(404)
+            .json(genericException(false, 404, "User does not exist"));
         }
-
-        res.send(genericResponse<User | null>(true, 200, user));
       } catch (error) {
         errorHandler(error, req, res);
       }

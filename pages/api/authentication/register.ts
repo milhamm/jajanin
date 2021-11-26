@@ -2,8 +2,9 @@ import { User } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
-import { genericException, genericResponse } from "../../../helper/response";
 import validateEmail from "../../../helper/validateEmail";
+import bcrypt from "bcrypt";
+import { genericException, genericResponse } from "../../../helper/response";
 
 export default async function handler(
   req: NextApiRequest,
@@ -26,6 +27,8 @@ export default async function handler(
       }
 
       try {
+        const salt = await bcrypt.genSalt(10);
+        data.password = await bcrypt.hash(data.password, salt);
         const user: User = await prisma.user.create({ data: { ...data } });
         res.send(genericResponse<User>(true, 200, user));
       } catch (error) {
