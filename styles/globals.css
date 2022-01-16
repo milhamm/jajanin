@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Mazzard";
+  src: url("/fonts/MazzardL-ExtraBoldItalic.otf") format("opentype");
+}
+
 body {
   font-family: "Nunito", sans-serif;
+}
+
+.container {
+  width: 1100px;
 }
