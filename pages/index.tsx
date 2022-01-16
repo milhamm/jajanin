@@ -3,13 +3,14 @@ import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import type { NextPage } from "next";
 import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
     <>
       {/* Header */}
       <div className='flex items-center justify-center flex-col w-full h-[420px] bg-red-500'>
-        <h1 className='font-bold text-[70px] text-white'>Jajanin</h1>
+        <h1 className='font-["Mazzard"] text-[70px] text-white'>Jajanin</h1>
         <p className='text-white'>Discover the best food & drinks</p>
         <div className='flex items-center gap-4 w-[715px] bg-white rounded-lg p-1 mt-4'>
           <div className='flex items-center w-[100px] gap-2'>
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Collection */}
-      <div className='w-[1200px] mx-auto my-0 mt-5'>
+      <div className='container mx-auto my-0 mt-5'>
         <h1 className='font-bold text-2xl'>Collections</h1>
         <div className='flex justify-between items-center'>
           <p>
@@ -75,6 +76,8 @@ const Home: NextPage = () => {
           />
         </div>
       </div>
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
