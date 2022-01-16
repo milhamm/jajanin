@@ -2,6 +2,7 @@ import { IoLocationSharp, IoSearch } from "react-icons/io5";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import type { NextPage } from "next";
 import RestaurantReview from "../components/RestaurantReview";
+import CollectionCard from "../components/CollectionCard";
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
       </div>
       {/* Slide Review */}
       <div className='w-[900px] mx-auto my-0'>
-        <div className='h-[540px] flex items-center justify-end mx-auto my-0 gap-[60px]'>
+        <div className='h-[540px] flex items-center justify-between mx-auto my-0 gap-[60px]'>
           <div className='h-[300px] w-[300px] rounded-lg shadow-lg shadow-black/15'></div>
           <div className='w-[450px] rounded-lg shadow-lg shadow-gray-300/50'>
             <RestaurantReview restaurantName='MCD' customerName={"Lepi"} />
@@ -41,6 +42,37 @@ const Home: NextPage = () => {
           <button>
             <BsArrowRightCircle className='fill-current text-red-500 text-2xl' />
           </button>
+        </div>
+      </div>
+      {/* Collection */}
+      <div className='w-[1200px] mx-auto my-0 mt-5'>
+        <h1 className='font-bold text-2xl'>Collections</h1>
+        <div className='flex justify-between items-center'>
+          <p>
+            Explore curated lists of top restaurants, cafes, pubs, and bars in
+            Solo, based on trends
+          </p>
+          <a href='' className='text-red-500 hover:underline'>
+            All collections in Solo
+          </a>
+        </div>
+        <div className='grid grid-cols-4 gap-3 mt-8 mb-4'>
+          <CollectionCard
+            collectionName='Trending this week'
+            totalCollection={30}
+          />
+          <CollectionCard
+            collectionName='Trending this week'
+            totalCollection={30}
+          />
+          <CollectionCard
+            collectionName='Trending this week'
+            totalCollection={30}
+          />
+          <CollectionCard
+            collectionName='Trending this week'
+            totalCollection={30}
+          />
         </div>
       </div>
     </>
