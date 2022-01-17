@@ -6,6 +6,7 @@ export function errorHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(error);
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     switch (error.code) {
       case "P2002":

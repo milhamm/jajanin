@@ -62,12 +62,14 @@ CREATE TABLE `Store` (
     `phone_number` VARCHAR(191) NOT NULL,
     `address` VARCHAR(191) NOT NULL,
     `average_cost` INTEGER NOT NULL,
-    `longitude` INTEGER NOT NULL,
-    `latitude` INTEGER NOT NULL,
+    `longitude` DOUBLE NOT NULL,
+    `latitude` DOUBLE NOT NULL,
     `slug` VARCHAR(191) NOT NULL,
     `more_info` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Store_slug_phone_number_key`(`slug`, `phone_number`),
+    UNIQUE INDEX `Store_store_name_key`(`store_name`),
+    UNIQUE INDEX `Store_phone_number_key`(`phone_number`),
+    UNIQUE INDEX `Store_slug_key`(`slug`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
