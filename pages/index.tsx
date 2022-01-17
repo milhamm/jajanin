@@ -46,7 +46,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Collection */}
-      <div className='container mx-auto my-0 mt-5'>
+      <div className='container my-0 mt-5'>
         <h1 className='font-bold text-2xl'>Collections</h1>
         <div className='flex justify-between items-center'>
           <p>
