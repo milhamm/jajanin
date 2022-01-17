@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider            = "mysql"
+  url                 = env("DATABASE_URL")
+  shadowDatabaseUrl   = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -68,8 +69,8 @@ model Store {
   phone_number    String  @unique
   address         String
   average_cost    Int
-  longitude       Int
-  latitude        Int
+  longitude       Float
+  latitude        Float
   slug            String  @unique
   more_info       String
   reviews         Review[]
