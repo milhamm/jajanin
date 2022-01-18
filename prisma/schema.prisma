@@ -5,7 +5,6 @@ generator client {
 datasource db {
   provider            = "mysql"
   url                 = env("DATABASE_URL")
-  shadowDatabaseUrl   = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -13,13 +12,13 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?
-  access_token       String?
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?
-  userId             String @map("user_id")
+  id_token           String? @db.Text
+  userId             String  @map("user_id")
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
