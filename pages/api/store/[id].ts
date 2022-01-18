@@ -15,6 +15,15 @@ export default async function handler(
         where: {
           slug: id,
         },
+        include: {
+          reviews: true,
+          photos: true,
+          menus: {
+            include: {
+              list_menus: true,
+            },
+          },
+        },
       });
       res.json(genericResponse<Store | null>(true, 200, store));
       break;

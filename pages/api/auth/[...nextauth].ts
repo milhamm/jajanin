@@ -43,5 +43,17 @@ export default NextAuth({
   pages: {
     signIn: "/auth/login",
   },
+  callbacks: {
+    session: async ({ session, user }) => {
+      const newSessions = {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+        },
+      };
+      return newSessions;
+    },
+  },
   secret: process.env.SECRET,
 });
