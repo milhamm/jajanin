@@ -33,9 +33,29 @@ export default async function handler(
               list_menus: true,
             },
           },
+          _count: {
+            select: { reviews: true },
+          },
         },
       });
-      res.json(genericResponse<StoreResponse | null>(true, 200, store));
+      const aggregations = await prisma.review.aggregate({
+        where: {
+          store_id: store?.id,
+        },
+        _avg: {
+          rating: true,
+        },
+        _count: {
+          rating: true,
+        },
+      });
+      console.log(aggregations);
+      const response = {
+        avg_rating: aggregations._avg.rating,
+        count_rating: aggregations._count.rating,
+        ...store,
+      };
+      res.json(genericResponse<any | null>(true, 200, response));
       break;
     }
     case "PUT": {

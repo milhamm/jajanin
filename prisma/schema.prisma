@@ -72,6 +72,8 @@ model Store {
   latitude        Float
   slug            String  @unique
   more_info       String
+  open_time       Int @default(0)
+  close_time      Int @default(0)
   reviews         Review[]
   photos          Photo[]
   menus           Menu[]
@@ -108,6 +110,7 @@ model Menu {
   store_id    String
   store       Store @relation(fields: [store_id], references: [id], onDelete: Cascade)
   menu_type   String
+  image       String
   list_menus  ListMenu[]
 }
 
