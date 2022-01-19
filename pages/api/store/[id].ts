@@ -26,15 +26,26 @@ export default async function handler(
           slug: id,
         },
         include: {
-          reviews: true,
+          reviews: {
+            include: {
+              user: {
+                select: {
+                  name: true,
+                  image: true,
+                },
+              },
+              _count: {
+                select: {
+                  votes: true,
+                },
+              },
+            },
+          },
           photos: true,
           menus: {
             include: {
               list_menus: true,
             },
-          },
-          _count: {
-            select: { reviews: true },
           },
         },
       });
@@ -49,13 +60,12 @@ export default async function handler(
           rating: true,
         },
       });
-      console.log(aggregations);
       const response = {
-        avg_rating: aggregations._avg.rating,
+        average_rating: aggregations._avg.rating,
         count_rating: aggregations._count.rating,
         ...store,
       };
-      res.json(genericResponse<any | null>(true, 200, response));
+      res.json(genericResponse(true, 200, response));
       break;
     }
     case "PUT": {
