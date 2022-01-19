@@ -11,8 +11,8 @@ const CollectionCard = ({
 }: CollectionCardProps) => {
   return (
     <a href=''>
-      <div className='w-full h-[340px] bg-blue-500 rounded-lg p-4'>
-        <div className='flex flex-col justify-end h-full text-white'>
+      <div className='w-full h-[340px] bg-blue-300 rounded-lg p-4 relative'>
+        <div className='flex flex-col justify-end h-full text-white z-90'>
           <h3>{collectionName}</h3>
           <div className='flex'>
             <p>{totalCollection} Places</p>
