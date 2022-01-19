@@ -9,15 +9,26 @@ const Home: NextPage = () => {
   return (
     <>
       {/* Header */}
-      <div className='flex items-center justify-center flex-col w-full h-[420px] bg-red-500'>
+      <div className='w-full bg-red-500'>
+        <div className='container flex justify-end gap-4 p-5'>
+          <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 '>
+            Log in
+          </button>
+          <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500'>
+            Sign up
+          </button>
+        </div>
+      </div>
+      <div className='flex items-center justify-start flex-col w-full h-[320px] bg-red-500'>
         <h1 className='font-["Mazzard"] text-[70px] text-white'>Jajanin</h1>
         <p className='text-white'>Discover the best food & drinks</p>
         <div className='flex items-center gap-4 w-[715px] bg-white rounded-lg p-1 mt-4'>
           <div className='flex items-center w-[100px] gap-2'>
-            <IoLocationSharp className='text-2xl' /> Solo
+            <IoLocationSharp className='text-2xl fill-current text-red-500' />{" "}
+            Solo
           </div>
           <div className='flex items-center grow w-full gap-2'>
-            <IoSearch className='text-2xl' />
+            <IoSearch className='text-2xl fill-current text-red-500' />
             <input
               type='text'
               placeholder='Search for restaurant, cuisine or a dish'
