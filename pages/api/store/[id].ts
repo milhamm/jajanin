@@ -1,8 +1,18 @@
-import { Store } from "@prisma/client";
+import { ListMenu, Menu, Photo, Review, Store } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
 import { genericException, genericResponse } from "../../../helper/response";
+
+export type StoreResponse =
+  | (Store & {
+      reviews: Review[];
+      photos: Photo[];
+      menus: (Menu & {
+        list_menus: ListMenu[];
+      })[];
+    })
+  | null;
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +21,7 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       const id = req.query.id as string;
-      const store: Store | null = await prisma.store.findFirst({
+      const store = await prisma.store.findFirst({
         where: {
           slug: id,
         },
@@ -25,7 +35,7 @@ export default async function handler(
           },
         },
       });
-      res.json(genericResponse<Store | null>(true, 200, store));
+      res.json(genericResponse<StoreResponse | null>(true, 200, store));
       break;
     }
     case "PUT": {
