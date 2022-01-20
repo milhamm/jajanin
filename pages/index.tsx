@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       <div className='flex items-center justify-start flex-col w-full h-[320px] bg-red-500'>
         <h1 className='font-["Mazzard"] text-[70px] text-white'>Jajanin</h1>
         <p className='text-white'>Discover the best food & drinks</p>
-        <div className='flex items-center gap-4 w-[715px] bg-white rounded-lg p-1 mt-4'>
+        <div className='flex items-center gap-4 bg-white rounded-lg p-1 mt-4 sm:w-[75%] lg:w-[715px]'>
           <div className='flex items-center w-[100px] gap-2'>
             <IoLocationSharp className='text-2xl fill-current text-red-500' />{" "}
             Solo
@@ -38,8 +38,8 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Slide Review */}
-      <div className='w-[900px] mx-auto my-0'>
-        <div className='h-[540px] flex items-center justify-between mx-auto my-0 gap-[60px]'>
+      <div className='w-[900px] mx-auto my-0 mt-16 sm:w-full'>
+        <div className=' flex items-center justify-between mx-auto gap-[60px] sm:flex-col lg:flex'>
           <div className='h-[300px] w-[300px] rounded-lg shadow-lg shadow-black/15'></div>
           <div className='w-[450px] rounded-lg shadow-lg shadow-gray-300/50'>
             <RestaurantReview restaurantName='MCD' customerName={"Lepi"} />
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
             <RestaurantReview restaurantName='KFC' customerName={"Aang"} />
           </div>
         </div>
-        <div className='flex justify-end items-center py-2 gap-4'>
+        <div className='flex justify-end items-center py-2 gap-4 sm:justify-center'>
           <button>
             <BsArrowLeftCircle className='fill-current text-red-500 text-2xl' />
           </button>
@@ -59,8 +59,8 @@ const Home: NextPage = () => {
       {/* Collection */}
       <div className='container my-0 mt-5'>
         <h1 className='font-bold text-2xl'>Collections</h1>
-        <div className='flex justify-between items-center'>
-          <p>
+        <div className='flex justify-between items-center sm:text-sm'>
+          <p className='w-[60%]'>
             Explore curated lists of top restaurants, cafes, pubs, and bars in
             Solo, based on trends
           </p>
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             All collections in Solo
           </a>
         </div>
-        <div className='grid grid-cols-4 gap-3 mt-8 mb-4'>
+        <div className='grid grid-cols-4 gap-3 mt-8 mb-4 sm:grid-cols-2'>
           <CollectionCard
             collectionName='Trending this week'
             totalCollection={30}

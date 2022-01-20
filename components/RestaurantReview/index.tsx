@@ -23,11 +23,11 @@ const RestaurantReview = ({
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
         dicta aliquam corrupti, eaque nulla debitis.
       </div>
-      <div className='flex justify-end items-center py-2 gap-2'>
-        <button>
+      <div className='flex justify-end items-center py-2'>
+        <button className='flex items-center gap-2'>
           <FaRegThumbsUp className='text-sm fill-current hover:text-black' />
+          <p className='text-sm'>Helpful</p>
         </button>
-        <p className='text-sm'>Helpful</p>
       </div>
     </div>
   );
