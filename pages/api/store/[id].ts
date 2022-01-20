@@ -1,8 +1,18 @@
-import { Store } from "@prisma/client";
+import { ListMenu, Menu, Photo, Review, Store } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
 import { genericException, genericResponse } from "../../../helper/response";
+
+export type StoreResponse =
+  | (Store & {
+      reviews: Review[];
+      photos: Photo[];
+      menus: (Menu & {
+        list_menus: ListMenu[];
+      })[];
+    })
+  | null;
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,12 +21,26 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       const id = req.query.id as string;
-      const store: Store | null = await prisma.store.findFirst({
+      const store = await prisma.store.findFirst({
         where: {
           slug: id,
         },
         include: {
-          reviews: true,
+          reviews: {
+            include: {
+              user: {
+                select: {
+                  name: true,
+                  image: true,
+                },
+              },
+              _count: {
+                select: {
+                  votes: true,
+                },
+              },
+            },
+          },
           photos: true,
           menus: {
             include: {
@@ -25,7 +49,23 @@ export default async function handler(
           },
         },
       });
-      res.json(genericResponse<Store | null>(true, 200, store));
+      const aggregations = await prisma.review.aggregate({
+        where: {
+          store_id: store?.id,
+        },
+        _avg: {
+          rating: true,
+        },
+        _count: {
+          rating: true,
+        },
+      });
+      const response = {
+        average_rating: aggregations._avg.rating,
+        count_rating: aggregations._count.rating,
+        ...store,
+      };
+      res.json(genericResponse(true, 200, response));
       break;
     }
     case "PUT": {

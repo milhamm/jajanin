@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -11,9 +12,13 @@ const Home: NextPage = () => {
       {/* Header */}
       <div className='w-full bg-red-500'>
         <div className='container flex justify-end gap-4 p-5'>
-          <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 '>
-            Log in
-          </button>
+          <Link href='/auth/login'>
+            <a>
+              <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 '>
+                Log in
+              </button>
+            </a>
+          </Link>
           <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500'>
             Sign up
           </button>
