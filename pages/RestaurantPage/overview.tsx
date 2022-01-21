@@ -9,7 +9,7 @@ const overview = () => {
   return (
     <>
       <RestaurantPageHeader store={detailStoreMock.data} />
-      <main className='container mt-5 flex gap-4 mobile:flex-col'>
+      <main className='container mt-5 flex gap-4 mobile:flex-col laptop:flex-row laptop:mb-5'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
           <div className='flex justify-between items-centered mb-2'>
@@ -19,11 +19,7 @@ const overview = () => {
               <RiArrowRightSFill />
             </a>
           </div>
-          <div className='grid grid-cols-4 gap-4 mobile:grid-cols-2'>
-            {/* <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' /> */}
-            {/* <Menu menu={detailStoreMock?.data?.menus[0]} /> */}
+          <div className='grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3'>
             {detailStoreMock.data?.menus.map((menu, index) => {
               return <Menu menu={menu} key={index} />;
             })}

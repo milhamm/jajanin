@@ -39,22 +39,26 @@ const Maps = ({ lat, long, address }: MapProps) => {
       <div>Maps</div>
       <p>{address}</p>
       <div className='flex gap-4 mt-4'>
-        <div className='flex justify-center items-center gap-2 border px-2 rounded-lg'>
-          <MdOutlineContentCopy />
-          <button onClick={() => navigator.clipboard.writeText(address)}>
+        <button
+          onClick={() => navigator.clipboard.writeText(address)}
+          className='flex justify-center items-center gap-2 border border-teal-400 py-1 rounded-lg active:border-transparent active:bg-teal-400'
+        >
+          <p className='text-teal-400 active:text-white flex items-center px-2 gap-1'>
+            <MdOutlineContentCopy />
             Copy
+          </p>
+        </button>
+        <a
+          href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${long}`}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <button className='flex justify-center items-center gap-2 border border-red-500 py-1 rounded-lg active:border-transparent active:bg-red-500 active:text-white'>
+            <p className='text-red-500 active:text-white flex items-center px-2 gap-1'>
+              <RiDirectionFill /> Direction
+            </p>
           </button>
-        </div>
-        <div className='flex justify-center items-center gap-2 border px-2 py-1 rounded-lg'>
-          <RiDirectionFill />
-          <a
-            href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${long}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <button>Direction</button>
-          </a>
-        </div>
+        </a>
       </div>
     </div>
   );

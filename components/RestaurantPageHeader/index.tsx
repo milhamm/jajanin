@@ -19,7 +19,7 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
       <div className='container pt-14'>
         <Header />
         {/* Image */}
-        <div className='h-[340px] flex gap-2 text-white mt-10 mobile:flex-col'>
+        <div className='h-[340px] flex gap-2 text-white mt-10 mobile:flex-col laptop:flex-row'>
           <div className='h-full bg-blue-500 w-full relative'>
             <Image
               src={store.photos[0].photos}
@@ -37,8 +37,8 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
           </div>
         </div>
         {/* Restaurant Details */}
-        <div className='flex justify-between mt-5 mobile:flex-col mobile:gap-2'>
-          <h3 className='text-2xl font-bold mobile:text-xl'>
+        <div className='flex justify-between mt-5 mobile:flex-col mobile:gap-2 laptop:flex-row'>
+          <h3 className='font-bold mobile:text-xl laptop:text-2xl'>
             {store.store_name}
           </h3>
           <div className='flex gap-5 items-center'>
@@ -46,12 +46,12 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
               href=''
               className='flex items-center gap-1 bg-teal-400 text-white p-2 rounded-lg mobile:py-1'
             >
-              <p>{store.average_rating}</p>
+              <p className='font-bold'>{store.average_rating}</p>
               <FaStar className='text-xs' />
             </a>
             <a
               href=''
-              className='flex flex-col items-center text-xs mobile:flex-row mobile:gap-1'
+              className='flex items-center text-xs mobile:flex-row mobile:gap-1 laptop:flex-col'
             >
               <p>{store.count_rating}</p>
               <p>Reviews</p>
@@ -60,14 +60,14 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
         </div>
         <div className='flex flex-col gap-3 mt-3'>
           <div className='flex items-center gap-2'>
-            <IoPinOutline className='text-red-500 outline-red-500 text-xl mobile:text-base' />
-            <p className='text-base text-gray-400 font-bold mobile:text-sm'>
+            <IoPinOutline className='text-red-500 outline-red-500 mobile:text-base laptop:text-xl' />
+            <p className='text-gray-400 font-bold mobile:text-sm laptop:text-base'>
               {store.address}
             </p>
           </div>
           <div className='flex items-center gap-2'>
-            <AiOutlineClockCircle className='text-red-500 text-xl mobile:text-base' />
-            <p className='text-base text-gray-400 font-bold mobile:text-sm'>
+            <AiOutlineClockCircle className='text-red-500 mobile:text-base laptop:text-xl' />
+            <p className='text-gray-400 font-bold mobile:text-sm laptop:text-base'>
               {timeRange(store.open_time, store.close_time)}
             </p>
           </div>
