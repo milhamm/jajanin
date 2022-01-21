@@ -26,3 +26,26 @@ body {
   margin-right: auto;
   padding: 0 1rem;
 }
+
+.rc-tabs {
+  border: none !important;
+  font-size: 14px;
+  overflow: hidden;
+  gap: 2rem !important;
+}
+
+.rc-tabs-nav-list {
+  display: flex;
+  gap: 1rem !important;
+}
+
+.rc-tabs-tab {
+  border: 0;
+  font-size: 1rem !important;
+  padding: 1rem;
+}
+
+.rc-tabs-tab-active {
+  font-weight: normal !important;
+  @apply text-red-500;
+}
