@@ -3,10 +3,14 @@ import { fetcher } from "../client/api";
 import { StoreDetailResponse } from "../types/store";
 
 const useStore = (slug: string) => {
-  const { data } = useSWR<StoreDetailResponse>(`/store/${slug}`, fetcher);
+  const { data, error } = useSWR<StoreDetailResponse>(
+    `/store/${slug}`,
+    fetcher
+  );
 
   return {
     store: data,
+    error: error,
   };
 };
 

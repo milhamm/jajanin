@@ -1,18 +1,9 @@
-import { ListMenu, Menu, Photo, Review, Store } from "@prisma/client";
+import { Store } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
 import { genericException, genericResponse } from "../../../helper/response";
-
-export type StoreResponse =
-  | (Store & {
-      reviews: Review[];
-      photos: Photo[];
-      menus: (Menu & {
-        list_menus: ListMenu[];
-      })[];
-    })
-  | null;
+import { StoreDetailType } from "../../../types/store";
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,7 +12,7 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       const id = req.query.id as string;
-      const store = await prisma.store.findFirst({
+      const store = await prisma.store.findUnique({
         where: {
           slug: id,
         },
@@ -49,23 +40,27 @@ export default async function handler(
           },
         },
       });
-      const aggregations = await prisma.review.aggregate({
-        where: {
-          store_id: store?.id,
-        },
-        _avg: {
-          rating: true,
-        },
-        _count: {
-          rating: true,
-        },
-      });
-      const response = {
-        average_rating: aggregations._avg.rating,
-        count_rating: aggregations._count.rating,
-        ...store,
-      };
-      res.json(genericResponse(true, 200, response));
+      if (store) {
+        const aggregations = await prisma.review.aggregate({
+          where: {
+            store_id: store?.id,
+          },
+          _avg: {
+            rating: true,
+          },
+          _count: {
+            rating: true,
+          },
+        });
+        const response = {
+          average_rating: aggregations._avg.rating,
+          count_rating: aggregations._count.rating,
+          ...store,
+        };
+        res.json(genericResponse<StoreDetailType>(true, 200, response));
+      } else {
+        res.status(404).json(genericException(true, 404, "Store not found"));
+      }
       break;
     }
     case "PUT": {

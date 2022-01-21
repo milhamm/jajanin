@@ -7,16 +7,26 @@ import Menu from "../../components/Menu";
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { currencyFormat } from "../../helper/currencyFormat";
 import useStore from "../../hooks/useStore";
+import Error from "next/error";
 
 const RestaurantPage = () => {
   const router = useRouter();
   const slug = router.query.slug as string;
 
-  const { store } = useStore(slug);
+  const { store, error } = useStore(slug);
 
-  console.log(store);
+  console.log(error);
+  if (error) {
+    return <Error statusCode={404} />;
+  }
 
-  if (!store?.data) return null;
+  if (!store?.data) {
+    return (
+      <div className='w-full h-screen grid place-items-center'>
+        Loading . . .
+      </div>
+    );
+  }
 
   return (
     <>
