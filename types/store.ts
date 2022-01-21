@@ -3,16 +3,16 @@ import { GenericResponse } from "./common";
 
 export type MenuWithListMenu = Array<Menu & { list_menus: Array<ListMenu> }>;
 
+export type ReviewWithUser = Review & {
+  user: Pick<User, "name" | "image">;
+  _count: { votes: number };
+};
+
 export type StoreDetailType =
   | (Store & {
       average_rating: number | null;
       count_rating: number;
-      reviews: Array<
-        Review & {
-          user: Pick<User, "name" | "image">;
-          _count: { votes: number };
-        }
-      >;
+      reviews: Array<ReviewWithUser>;
       photos: Array<Photo>;
       menus: MenuWithListMenu;
     })

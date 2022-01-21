@@ -1,6 +1,5 @@
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { detailStoreMock } from "../../mocks/data";
-import UserReview from "../../components/UserReview";
 import StarsReview from "../../components/StarsReview";
 
 const review = () => {
@@ -13,8 +12,6 @@ const review = () => {
           <div>
             <h3 className='font-semibold text-lg'>RestaurantName Reviews</h3>
           </div>
-          <UserReview />
-          <UserReview />
         </section>
         <aside className='flex flex-col h-fit gap-5 items-start p-5 rounded-lg shadow shadow-gray-300'>
           <p className='font-medium text-left'>Rate your dining experience</p>

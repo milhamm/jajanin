@@ -33,7 +33,10 @@ const Maps = ({ lat, long, address }: MapProps) => {
   return (
     <div className='mobile:text-sm'>
       <div className='mb-4 relative'>
-        <div className='h-[200px]' ref={mapContainerRef}></div>
+        <div
+          className='h-[200px] w-full rounded-xl'
+          ref={mapContainerRef}
+        ></div>
       </div>
       <p className='font-semibold text-lg mobile:text-base'>Direction</p>
       <div>Maps</div>
