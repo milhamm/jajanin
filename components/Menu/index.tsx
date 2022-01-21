@@ -1,12 +1,23 @@
+import { Menu } from "@prisma/client";
+import Image from "next/image";
+
 type MenuProps = {
-  menuName: string;
+  menu: Menu;
 };
 
-const Menu = ({ menuName }: MenuProps) => {
+const Menu = ({ menu }: MenuProps) => {
   return (
     <a href='' className=''>
-      <div className='h-[218px] rounded-lg shadow shadow-gray-200'> </div>
-      <p className='py-2 font-medium'>{menuName}</p>
+      <div className='w-full h-[218px] rounded-lg shadow shadow-gray-200 relative'>
+        <Image
+          className='rounded'
+          src={menu.image}
+          alt={menu.menu_type}
+          layout='fill'
+          objectFit='cover'
+        />
+      </div>
+      <p className='py-2 font-medium'>{menu.menu_type}</p>
     </a>
   );
 };

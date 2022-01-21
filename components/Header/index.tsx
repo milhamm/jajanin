@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className='flex justify-between items-center gap-5'>
+    <div className='flex justify-between items-center gap-5 pt-5'>
       <h1 className='font-["Mazzard"] text-[2em] text-red-500'>Jajanin</h1>
       <div className='w-[700px] flex items-center gap-2 rounded-lg border-1 px-3 py-1 shadow-sm shadow-gray-200'>
         <IoSearch className='text-2xl' />

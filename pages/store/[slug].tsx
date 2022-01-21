@@ -7,23 +7,30 @@ import Menu from "../../components/Menu";
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { currencyFormat } from "../../helper/currencyFormat";
 import useStore from "../../hooks/useStore";
+import Error from "next/error";
 
 const RestaurantPage = () => {
   const router = useRouter();
   const slug = router.query.slug as string;
 
-  const { store } = useStore(slug);
+  const { store, error } = useStore(slug);
 
-  console.log(store);
+  console.log(error);
+  if (error) {
+    return <Error statusCode={404} />;
+  }
 
-  if (!store?.data) return null;
+  if (!store?.data) {
+    return (
+      <div className='w-full h-screen grid place-items-center'>
+        Loading . . .
+      </div>
+    );
+  }
 
   return (
     <>
-      <RestaurantPageHeader
-        name={store.data.store_name}
-        photos={store.data.photos}
-      />
+      <RestaurantPageHeader store={store.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
@@ -35,9 +42,9 @@ const RestaurantPage = () => {
             </a>
           </div>
           <div className='grid grid-cols-4 gap-4'>
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
+            {store.data.menus.map((menu) => (
+              <Menu key={menu.id} menu={menu} />
+            ))}
           </div>
           <div>
             <h3 className='font-semibold text-lg mb-2'>Average Cost</h3>
@@ -59,10 +66,7 @@ const RestaurantPage = () => {
           <div className='flex flex-col'>
             <p className='font-semibold text-lg'>Call</p>
             <a href='' className='text-red-500'>
-              +62-821-8888-7777
-            </a>
-            <a href='' className='text-red-500'>
-              +62-821-8888-7777
+              {store.data.phone_number}
             </a>
           </div>
           <div>
