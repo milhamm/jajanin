@@ -1,10 +1,9 @@
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { RiArrowRightSFill } from "react-icons/ri";
 import { BiCheckCircle, BiXCircle } from "react-icons/bi";
-import { MdOutlineContentCopy } from "react-icons/md";
-import { RiDirectionFill } from "react-icons/ri";
 import { detailStoreMock } from "../../mocks/data";
 import Menu from "../../components/Menu";
+import Maps from "../../components/Maps";
 
 const overview = () => {
   return (
@@ -61,21 +60,11 @@ const overview = () => {
               +62-821-8888-7777
             </a>
           </div>
-          <div className='mobile:text-sm'>
-            <p className='font-semibold text-lg mobile:text-base'>Direction</p>
-            <div>Maps</div>
-            <p>Jl. P.H.H. Mustofa No. 31, Surapati, Bandung</p>
-            <div className='flex gap-4 mt-4'>
-              <div className='flex justify-center items-center gap-2 border px-2 rounded-lg'>
-                <MdOutlineContentCopy />
-                <button>Copy</button>
-              </div>
-              <div className='flex justify-center items-center gap-2 border px-2 py-1 rounded-lg'>
-                <RiDirectionFill />
-                <button>Direction</button>
-              </div>
-            </div>
-          </div>
+          <Maps
+            lat={detailStoreMock.data?.latitude as number}
+            long={detailStoreMock.data?.longitude as number}
+            address={detailStoreMock.data?.address as string}
+          />
         </aside>
       </main>
     </>

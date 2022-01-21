@@ -16,6 +16,7 @@
     "@types/bcrypt": "^5.0.0",
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
+    "mapbox-gl": "^2.6.1",
     "next": "12.0.4",
     "next-auth": "^4.1.2",
     "react": "17.0.2",
@@ -25,6 +26,7 @@
     "swr": "^1.1.2"
   },
   "devDependencies": {
+    "@types/mapbox-gl": "^2.6.0",
     "@types/node": "16.11.7",
     "@types/react": "17.0.35",
     "autoprefixer": "^10.4.2",
