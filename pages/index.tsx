@@ -1,35 +1,14 @@
 import { IoLocationSharp, IoSearch } from "react-icons/io5";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
-import { HiOutlineMenu } from "react-icons/hi";
 import type { NextPage } from "next";
 import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
-import Footer from "../components/Footer";
-import Link from "next/link";
+
+import DefaultLayout from "../components/Layout/DefaultLayout";
 
 const Home: NextPage = () => {
   return (
-    <>
-      {/* Header */}
-      {/* Header - Login */}
-      <div className='w-full bg-red-500'>
-        <div className='container flex items-center gap-4 p-5 mobile:justify-start laptop:justify-end'>
-          <button>
-            <HiOutlineMenu className='text-white text-[2rem] laptop:hidden' />
-          </button>
-          <Link href='/auth/login'>
-            <a>
-              <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 mobile:hidden laptop:block'>
-                Log in
-              </button>
-            </a>
-          </Link>
-          <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 mobile:hidden laptop:block'>
-            Sign up
-          </button>
-        </div>
-      </div>
-      {/* Header - Logo */}
+    <DefaultLayout isHome>
       <div className='flex items-center justify-start flex-col w-full h-[320px] bg-red-500 pt-10'>
         <h1 className='font-["Mazzard"] text-[70px] text-white'>Jajanin</h1>
         <p className='text-white'>Discover the best food & drinks</p>
@@ -104,8 +83,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Footer */}
-      <Footer />
-    </>
+    </DefaultLayout>
   );
 };
 

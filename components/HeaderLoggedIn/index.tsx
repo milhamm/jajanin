@@ -1,6 +1,5 @@
 import { IoSearch } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
-import Image from "next/image";
 
 const HeaderLoggedIn = () => {
   return (
@@ -20,19 +19,6 @@ const HeaderLoggedIn = () => {
             className='p-2 w-full rounded-lg focus:ring-0 focus:border-none focus:outline-none mobile:text-base'
           />
         </div>
-        <button className='flex gap-2 text-gray-300 bg-red-500 p-2 rounded-lg items-center mobile:hidden laptop:flex'>
-          <div className='w-[30px] h-[30px] rounded-full overflow-hidden bg-blue-500 relative'>
-            <Image
-              src='/image/levi.jpg'
-              objectFit='cover'
-              layout='fill'
-              alt='profilPicture'
-            />
-          </div>
-          <div>
-            <h5 className='font-medium text-white'>Levi Ackerman</h5>
-          </div>
-        </button>
       </div>
     </div>
   );

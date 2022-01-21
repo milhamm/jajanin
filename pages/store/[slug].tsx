@@ -8,6 +8,7 @@ import "rc-tabs/assets/index.css";
 import OverviewSection from "../../components/Detail/Overview";
 import MenuSection from "../../components/Detail/MenuSection";
 import ReviewSection from "../../components/Detail/ReviewSection";
+import DefaultLayout from "../../components/Layout/DefaultLayout";
 
 const RestaurantPage = () => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const RestaurantPage = () => {
   const { data } = store;
 
   return (
-    <>
+    <DefaultLayout>
       <RestaurantPageHeader store={data} />
       <main className='container'>
         <Tabs defaultActiveKey='1' onChange={() => {}}>
@@ -55,7 +56,7 @@ const RestaurantPage = () => {
           </TabPane>
         </Tabs>
       </main>
-    </>
+    </DefaultLayout>
   );
 };
 
