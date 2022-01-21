@@ -52,16 +52,19 @@ export const detailStoreMock: StoreDetailResponse = {
     ],
     photos: [
       {
+        id: "aa",
         store_id: "ckyiz33es0000mwfyj463ha20",
         photos:
           "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
       },
       {
+        id: "aa",
         store_id: "ckyiz33es0000mwfyj463ha20",
         photos:
           "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
       },
       {
+        id: "aa",
         store_id: "ckyiz33es0000mwfyj463ha20",
         photos:
           "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
