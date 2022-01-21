@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `List_Menu` ADD COLUMN `detail` VARCHAR(191) NOT NULL DEFAULT '',
+    ADD COLUMN `image` VARCHAR(191) NOT NULL DEFAULT '';
