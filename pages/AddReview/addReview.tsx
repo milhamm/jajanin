@@ -7,10 +7,15 @@ const addReview = () => {
     <>
       <div className='mx-auto mt-8 flex flex-col gap-5 mobile:w-[85%] laptop:w-[769px] laptop:px-5'>
         <div className='flex flex-col gap-5 px-4 py-3 rounded-lg shadow shadow-gray-300'>
+          <div className='flex justify-center'>
+            <h1 className='font-["Mazzard"] text-[2em] text-red-500 laptop:block'>
+              Jajanin
+            </h1>
+          </div>
           <div className='flex justify-between'>
             <p className='font-bold'>Add Review</p>
             <button>
-              <IoClose className='text-2xl text-red-500' />
+              <IoClose className='text-2xl text-red-500 hover:text-red-300' />
             </button>
           </div>
           <StarsReview />
@@ -31,12 +36,12 @@ const addReview = () => {
                 id='addReview'
                 placeholder='Write your review'
                 rows={3}
-                className='w-full border rounded-lg p-2 text-sm text-justify focus:outline-none'
+                className='w-full border rounded-lg p-2 text-sm text-justify outline-none focus:border-transparent focus:outline-red-500'
               ></textarea>
             </div>
           </div>
           <div className='flex justify-end'>
-            <button className='w-[140px] bg-teal-400 text-white text-sm font-extrabold hover:bg-teal-300 rounded-lg px-2 py-1 '>
+            <button className='w-[130px] bg-teal-400 text-white text-sm font-bold hover:bg-teal-300 rounded-lg px-2 py-1 '>
               Submit Review
             </button>
           </div>
