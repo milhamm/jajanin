@@ -11,7 +11,7 @@ const Header = () => {
       <h1 className='font-["Mazzard"] text-[2em] text-red-500 mobile:hidden laptop:block'>
         Jajanin
       </h1>
-      <div className='flex items-center gap-2 rounded-lg border-1 px-3 py-1 shadow-sm shadow-gray-200 laptop:w-[50%] desktop:w-[700px]'>
+      <div className='w-[700px] flex items-center gap-2 rounded-lg border-1 px-3 py-1 shadow-sm shadow-gray-200 laptop:w-[50%] desktop:w-[700px]'>
         <IoSearch className='text-2xl mobile:text-base' />
         <input
           type='text'
