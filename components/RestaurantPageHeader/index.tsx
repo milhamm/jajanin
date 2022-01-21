@@ -18,8 +18,8 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
       <div className='container pt-14'>
         <Header />
         {/* Image */}
-        <div className='h-[340px] flex gap-2 text-white mt-10'>
-          <div className='h-full bg-blue-500 w-[60%] relative'>
+        <div className='h-[340px] flex gap-2 text-white mt-10 mobile:flex-col'>
+          <div className='h-full bg-blue-500 w-full relative'>
             <Image
               src={store.photos[0].photos}
               layout='fill'
@@ -28,7 +28,7 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
               alt={store.store_name}
             />
           </div>
-          <div className='grid grid-rows-2 grid-cols-2 w-[40%] gap-2'>
+          <div className='grid grid-rows-2 grid-cols-2 w-full gap-2 mobile:h-full'>
             {store.photos.map((photo, idx) => (
               <GalleryItem key={idx} srcImage={photo.photos} />
             ))}
@@ -36,17 +36,22 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
           </div>
         </div>
         {/* Restaurant Details */}
-        <div className='flex justify-between mt-5'>
-          <h3 className='text-2xl font-bold'>{store.store_name}</h3>
+        <div className='flex justify-between mt-5 mobile:flex-col mobile:gap-2'>
+          <h3 className='text-2xl font-bold mobile:text-xl'>
+            {store.store_name}
+          </h3>
           <div className='flex gap-5 items-center'>
             <a
               href=''
-              className='flex items-center gap-1 bg-teal-400 text-white p-2 rounded-lg'
+              className='flex items-center gap-1 bg-teal-400 text-white p-2 rounded-lg mobile:py-1'
             >
               <p>{store.average_rating}</p>
               <FaStar className='text-xs' />
             </a>
-            <a href='' className='flex flex-col items-center text-xs'>
+            <a
+              href=''
+              className='flex flex-col items-center text-xs mobile:flex-row mobile:gap-1'
+            >
               <p>{store.count_rating}</p>
               <p>Reviews</p>
             </a>
@@ -54,12 +59,17 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
         </div>
         <div className='flex flex-col gap-3 mt-3'>
           <div className='flex items-center gap-2'>
-            <IoPinOutline className='text-red-500 outline-red-500 text-xl' />
-            <p className='text-base text-gray-400 font-bold'>{store.address}</p>
+            <IoPinOutline className='text-red-500 outline-red-500 text-xl mobile:text-base' />
+            <p className='text-base text-gray-400 font-bold mobile:text-sm'>
+              {store.address}
+            </p>
           </div>
           <div className='flex items-center gap-2'>
-            <AiOutlineClockCircle className='text-red-500 text-xl' />
-            <p className='text-base text-gray-400 font-bold'>{}</p>
+            <AiOutlineClockCircle className='text-red-500 text-xl mobile:text-base' />
+            <p className='text-base text-gray-400 font-bold mobile:text-sm'>
+              {store.open_time}
+              {store.close_time}
+            </p>
           </div>
         </div>
         <button className='flex justify-center items-center text-xs hover:text-white gap-2 mt-5 hover:bg-red-500 rounded-lg h-[25px] p-2 bg-white text-red-500 border border-red-500'>
