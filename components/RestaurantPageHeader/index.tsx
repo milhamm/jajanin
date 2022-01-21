@@ -5,6 +5,7 @@ import Image from "next/image";
 import GalleryItem from "../GalleryItem";
 import Header from "../Header";
 import { StoreDetailType } from "../../types/store";
+import { timeRange } from "../../helper/timeRange";
 
 type RestaurantPageHeaderProps = {
   store: StoreDetailType;
@@ -67,8 +68,7 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
           <div className='flex items-center gap-2'>
             <AiOutlineClockCircle className='text-red-500 mobile:text-base laptop:text-xl' />
             <p className='text-gray-400 font-bold mobile:text-sm laptop:text-base'>
-              {store.open_time}
-              {store.close_time}
+              {timeRange(store.open_time, store.close_time)}
             </p>
           </div>
         </div>
