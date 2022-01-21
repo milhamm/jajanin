@@ -30,10 +30,7 @@ const RestaurantPage = () => {
 
   return (
     <>
-      <RestaurantPageHeader
-        name={store.data.store_name}
-        photos={store.data.photos}
-      />
+      <RestaurantPageHeader store={store.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
@@ -45,9 +42,9 @@ const RestaurantPage = () => {
             </a>
           </div>
           <div className='grid grid-cols-4 gap-4'>
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
+            {store.data.menus.map((menu) => (
+              <Menu key={menu.id} menu={menu} />
+            ))}
           </div>
           <div>
             <h3 className='font-semibold text-lg mb-2'>Average Cost</h3>
@@ -69,10 +66,7 @@ const RestaurantPage = () => {
           <div className='flex flex-col'>
             <p className='font-semibold text-lg'>Call</p>
             <a href='' className='text-red-500'>
-              +62-821-8888-7777
-            </a>
-            <a href='' className='text-red-500'>
-              +62-821-8888-7777
+              {store.data.phone_number}
             </a>
           </div>
           <div>
