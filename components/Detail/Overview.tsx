@@ -25,7 +25,7 @@ const OverviewSection = ({
   more_info,
 }: OverviewSectionProps) => {
   return (
-    <main className='container w-full mt-5 flex gap-8 mobile:flex-col laptop:flex-row laptop:mb-5'>
+    <main className='w-full mt-5 flex gap-8 mobile:flex-col laptop:flex-row laptop:mb-5'>
       <section className='flex flex-col grow gap-5'>
         <div className='flex justify-between items-centered mb-2'>
           <h3 className='font-semibold text-lg'>Menu</h3>

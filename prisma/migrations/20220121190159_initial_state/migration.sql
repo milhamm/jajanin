@@ -4,12 +4,12 @@ CREATE TABLE `Account` (
     `type` VARCHAR(191) NOT NULL,
     `provider` VARCHAR(191) NOT NULL,
     `providerAccountId` VARCHAR(191) NOT NULL,
-    `refresh_token` VARCHAR(191) NULL,
-    `access_token` VARCHAR(191) NULL,
+    `refresh_token` TEXT NULL,
+    `access_token` TEXT NULL,
     `expires_at` INTEGER NULL,
     `token_type` VARCHAR(191) NULL,
     `scope` VARCHAR(191) NULL,
-    `id_token` VARCHAR(191) NULL,
+    `id_token` TEXT NULL,
     `user_id` VARCHAR(191) NOT NULL,
     `session_state` VARCHAR(191) NULL,
     `oauth_token_secret` VARCHAR(191) NULL,
@@ -66,6 +66,8 @@ CREATE TABLE `Store` (
     `latitude` DOUBLE NOT NULL,
     `slug` VARCHAR(191) NOT NULL,
     `more_info` VARCHAR(191) NOT NULL,
+    `open_time` INTEGER NOT NULL DEFAULT 0,
+    `close_time` INTEGER NOT NULL DEFAULT 0,
 
     UNIQUE INDEX `Store_store_name_key`(`store_name`),
     UNIQUE INDEX `Store_phone_number_key`(`phone_number`),
@@ -95,10 +97,11 @@ CREATE TABLE `Vote_Review` (
 
 -- CreateTable
 CREATE TABLE `Photo` (
+    `id` VARCHAR(191) NOT NULL,
     `store_id` VARCHAR(191) NOT NULL,
     `photos` VARCHAR(191) NOT NULL,
 
-    PRIMARY KEY (`store_id`)
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -106,6 +109,7 @@ CREATE TABLE `Menu` (
     `id` VARCHAR(191) NOT NULL,
     `store_id` VARCHAR(191) NOT NULL,
     `menu_type` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -115,7 +119,9 @@ CREATE TABLE `List_Menu` (
     `id` VARCHAR(191) NOT NULL,
     `menu_id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NOT NULL DEFAULT '',
     `price` INTEGER NOT NULL,
+    `detail` VARCHAR(191) NOT NULL DEFAULT '',
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

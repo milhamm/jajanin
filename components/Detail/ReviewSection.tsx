@@ -8,7 +8,7 @@ type ReviewSectionProps = {
 
 const ReviewSection = ({ store }: ReviewSectionProps) => {
   return (
-    <main className='container mt-5 flex gap-12 mobile:flex-col mobile:flex-col-reverse mobile:mb-10 laptop:flex-row'>
+    <main className='mt-5 flex gap-12 mobile:flex-col mobile:flex-col-reverse mobile:mb-10 laptop:flex-row'>
       <section className='flex flex-col gap-4 grow w-full'>
         <div>
           <h3 className='font-semibold text-lg'>{store?.store_name} Reviews</h3>

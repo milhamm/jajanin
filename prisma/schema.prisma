@@ -100,7 +100,8 @@ model VoteReview {
 }
 
 model Photo {
-  store_id  String @id @default(cuid())
+  id        String  @id @default(cuid())
+  store_id  String
   store     Store @relation(fields: [store_id], references: [id], onDelete: Cascade)
   photos    String
 }
