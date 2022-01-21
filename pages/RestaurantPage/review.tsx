@@ -2,20 +2,12 @@ import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { FaStar, FaRegThumbsUp, FaRegCommentDots } from "react-icons/fa";
 import { VscEdit } from "react-icons/vsc";
 import Image from "next/image";
+import { detailStoreMock } from "../../mocks/data";
 
 const review = () => {
   return (
     <>
-      <RestaurantPageHeader
-        name='Steak'
-        photos={[
-          {
-            photos:
-              "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
-            store_id: "Steak",
-          },
-        ]}
-      />
+      <RestaurantPageHeader store={detailStoreMock.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col gap-4'>
           {/* Restaurant Reviews */}

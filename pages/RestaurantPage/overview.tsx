@@ -1,14 +1,14 @@
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { RiArrowRightSFill } from "react-icons/ri";
 import { BiCheckCircle, BiXCircle } from "react-icons/bi";
-import Menu from "../../components/Menu";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { RiDirectionFill } from "react-icons/ri";
+import { detailStoreMock } from "../../mocks/data";
 
 const overview = () => {
   return (
     <>
-      <RestaurantPageHeader />
+      <RestaurantPageHeader store={detailStoreMock.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
@@ -20,9 +20,9 @@ const overview = () => {
             </a>
           </div>
           <div className='grid grid-cols-4 gap-4'>
+            {/* <Menu menuName='Beverages' />
             <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
+            <Menu menuName='Beverages' /> */}
           </div>
           <div>
             <h3 className='font-semibold text-lg mb-2'>Average Cost</h3>
