@@ -12,6 +12,7 @@ const GalleryItem = ({ srcImage, text }: GalleryItemProps) => {
         src={srcImage}
         layout='fill'
         objectFit='cover'
+        alt='profilPicture'
         className='hover:scale-125 transition-all duration-700 cursor-pointer'
       />
       {text ? (
