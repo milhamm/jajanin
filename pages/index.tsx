@@ -63,22 +63,10 @@ const Home: NextPage = () => {
           </a>
         </div>
         <div className='grid gap-3 mt-8 mb-4 mobile:grid-cols-2 desktop:grid-cols-4'>
-          <CollectionCard
-            collectionName='Trending this week'
-            totalCollection={30}
-          />
-          <CollectionCard
-            collectionName='Trending this week'
-            totalCollection={30}
-          />
-          <CollectionCard
-            collectionName='Trending this week'
-            totalCollection={30}
-          />
-          <CollectionCard
-            collectionName='Trending this week'
-            totalCollection={30}
-          />
+          <CollectionCard collectionName='Trending this week' />
+          <CollectionCard collectionName='Trending this week' />
+          <CollectionCard collectionName='Trending this week' />
+          <CollectionCard collectionName='Trending this week' />
         </div>
       </div>
       {/* Footer */}
