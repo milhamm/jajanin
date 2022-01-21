@@ -5,6 +5,7 @@
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint --fix",
     "pre-commit": "npx lint-staged && next lint --fix && git add -A ."
