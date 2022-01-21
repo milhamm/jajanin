@@ -19,7 +19,7 @@ const Profile = ({ image, name }: ProfileProps) => {
 
   return (
     <div
-      className='relative z-50'
+      className='relative'
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
@@ -43,7 +43,7 @@ const Profile = ({ image, name }: ProfileProps) => {
           <div
             className='p-2 hover:bg-zinc-100 rounded cursor-pointer text-red-500'
             onClick={async () => {
-              await signOut({ redirect: false });
+              await signOut();
             }}
           >
             Logout

@@ -18,6 +18,9 @@ export default async function handler(
         },
         include: {
           reviews: {
+            orderBy: {
+              createdAt: "desc",
+            },
             include: {
               user: {
                 select: {

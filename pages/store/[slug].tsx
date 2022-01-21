@@ -29,13 +29,20 @@ const RestaurantPage = () => {
   }
 
   const { data } = store;
+  const defaultKey = router.query?.tabs as string;
 
   return (
     <DefaultLayout>
       <RestaurantPageHeader store={data} />
       <main className='container'>
-        <Tabs defaultActiveKey='1' onChange={() => {}}>
-          <TabPane tab='Overview' key='1'>
+        <Tabs
+          defaultActiveKey={defaultKey ?? "1"}
+          onChange={(key: string) => {
+            const url = new URLSearchParams({ tabs: key });
+            router.push(`${router.asPath.split("?")[0]}?${url.toString()}`);
+          }}
+        >
+          <TabPane tab='Overview' key='overview'>
             <section className='flex flex-col grow gap-5'>
               <OverviewSection
                 avg={data.average_cost}
@@ -48,10 +55,10 @@ const RestaurantPage = () => {
               />
             </section>
           </TabPane>
-          <TabPane tab='Reviews' key='2'>
+          <TabPane tab='Reviews' key='review'>
             <ReviewSection store={data} />
           </TabPane>
-          <TabPane tab='Menu' key='3'>
+          <TabPane tab='Menu' key='menus'>
             <MenuSection menus={data.menus} />
           </TabPane>
         </Tabs>

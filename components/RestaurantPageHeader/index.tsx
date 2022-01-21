@@ -13,7 +13,7 @@ type RestaurantPageHeaderProps = {
 const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
   if (!store) return null;
   return (
-    <div className='container pt-14'>
+    <div className='container mt-[4rem]'>
       <div className='h-[340px] flex gap-2 text-white mt-10 mobile:flex-col laptop:flex-row'>
         <div className='h-full bg-blue-500 w-full relative'>
           <Image
