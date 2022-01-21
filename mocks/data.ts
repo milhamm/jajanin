@@ -56,8 +56,42 @@ export const detailStoreMock: StoreDetailResponse = {
         photos:
           "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
       },
+      {
+        store_id: "ckyiz33es0000mwfyj463ha20",
+        photos:
+          "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
+      },
+      {
+        store_id: "ckyiz33es0000mwfyj463ha20",
+        photos:
+          "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
+      },
     ],
     menus: [
+      {
+        id: "ckylnbi460001hcd6x3xnmndb",
+        store_id: "ckyiz33es0000mwfyj463ha20",
+        menu_type: "Beverages",
+        image:
+          "https://media.discordapp.net/attachments/687536035634085951/931200158115446854/271803467_3189990104601469_2670958189705939664_n.png?width=506&height=676",
+        list_menus: [],
+      },
+      {
+        id: "ckylnbi460001hcd6x3xnmndb",
+        store_id: "ckyiz33es0000mwfyj463ha20",
+        menu_type: "Beverages",
+        image:
+          "https://media.discordapp.net/attachments/687536035634085951/931200158115446854/271803467_3189990104601469_2670958189705939664_n.png?width=506&height=676",
+        list_menus: [],
+      },
+      {
+        id: "ckylnbi460001hcd6x3xnmndb",
+        store_id: "ckyiz33es0000mwfyj463ha20",
+        menu_type: "Beverages",
+        image:
+          "https://media.discordapp.net/attachments/687536035634085951/931200158115446854/271803467_3189990104601469_2670958189705939664_n.png?width=506&height=676",
+        list_menus: [],
+      },
       {
         id: "ckylnbi460001hcd6x3xnmndb",
         store_id: "ckyiz33es0000mwfyj463ha20",

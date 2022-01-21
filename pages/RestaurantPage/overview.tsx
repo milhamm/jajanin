@@ -4,12 +4,13 @@ import { BiCheckCircle, BiXCircle } from "react-icons/bi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { RiDirectionFill } from "react-icons/ri";
 import { detailStoreMock } from "../../mocks/data";
+import Menu from "../../components/Menu";
 
 const overview = () => {
   return (
     <>
       <RestaurantPageHeader store={detailStoreMock.data} />
-      <main className='container mt-5 flex gap-4'>
+      <main className='container mt-5 flex gap-4 mobile:flex-col'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
           <div className='flex justify-between items-centered mb-2'>
@@ -19,10 +20,14 @@ const overview = () => {
               <RiArrowRightSFill />
             </a>
           </div>
-          <div className='grid grid-cols-4 gap-4'>
+          <div className='grid grid-cols-4 gap-4 mobile:grid-cols-2'>
             {/* <Menu menuName='Beverages' />
             <Menu menuName='Beverages' />
             <Menu menuName='Beverages' /> */}
+            {/* <Menu menu={detailStoreMock?.data?.menus[0]} /> */}
+            {detailStoreMock.data?.menus.map((menu, index) => {
+              return <Menu menu={menu} key={index} />;
+            })}
           </div>
           <div>
             <h3 className='font-semibold text-lg mb-2'>Average Cost</h3>
@@ -46,9 +51,9 @@ const overview = () => {
             </div>
           </div>
         </section>
-        <aside className='flex flex-col h-fit gap-5 border rounded-lg p-5 shadow shadow-gray-300'>
-          <div className='flex flex-col'>
-            <p className='font-semibold text-lg'>Call</p>
+        <aside className='flex flex-col h-fit gap-5 border rounded-lg p-5 shadow shadow-gray-300 mobile:mb-5'>
+          <div className='flex flex-col mobile:text-sm'>
+            <p className='font-semibold text-lg mobile:text-base'>Call</p>
             <a href='' className='text-red-500'>
               +62-821-8888-7777
             </a>
@@ -56,11 +61,11 @@ const overview = () => {
               +62-821-8888-7777
             </a>
           </div>
-          <div>
-            <p className='font-semibold text-lg'>Direction</p>
+          <div className='mobile:text-sm'>
+            <p className='font-semibold text-lg mobile:text-base'>Direction</p>
             <div>Maps</div>
             <p>Jl. P.H.H. Mustofa No. 31, Surapati, Bandung</p>
-            <div className='flex gap-4'>
+            <div className='flex gap-4 mt-4'>
               <div className='flex justify-center items-center gap-2 border px-2 rounded-lg'>
                 <MdOutlineContentCopy />
                 <button>Copy</button>
