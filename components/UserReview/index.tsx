@@ -7,7 +7,12 @@ const UserReview = () => {
     <>
       <div className='flex items-center gap-3'>
         <div className='w-[44px] h-[44px] rounded-full overflow-hidden bg-blue-500 relative'>
-          <Image src='/image/levi.jpg' objectFit='cover' layout='fill' />
+          <Image
+            src='/image/levi.jpg'
+            objectFit='cover'
+            layout='fill'
+            alt='profilPicture'
+          />
         </div>
         <div>
           <h5 className='font-bold'>Levi Ackerman</h5>

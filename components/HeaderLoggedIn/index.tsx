@@ -22,7 +22,12 @@ const HeaderLoggedIn = () => {
         </div>
         <button className='flex gap-2 text-gray-300 bg-red-500 p-2 rounded-lg items-center mobile:hidden laptop:flex'>
           <div className='w-[30px] h-[30px] rounded-full overflow-hidden bg-blue-500 relative'>
-            <Image src='/image/levi.jpg' objectFit='cover' layout='fill' />
+            <Image
+              src='/image/levi.jpg'
+              objectFit='cover'
+              layout='fill'
+              alt='profilPicture'
+            />
           </div>
           <div>
             <h5 className='font-medium text-white'>Levi Ackerman</h5>
