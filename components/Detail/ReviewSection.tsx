@@ -1,5 +1,5 @@
 import { StoreDetailType } from "../../types/store";
-import StarsReview from "../StarsReview";
+import SideRating from "../SideRating";
 import UserReview from "../UserReview";
 
 type ReviewSectionProps = {
@@ -17,15 +17,7 @@ const ReviewSection = ({ store }: ReviewSectionProps) => {
           <UserReview review={review} key={review.id} />
         ))}
       </section>
-      <aside className='flex flex-col h-fit gap-5 items-start p-5 rounded-lg shadow shadow-gray-300'>
-        <p className='font-medium text-left'>Rate your dining experience</p>
-        <div className='flex gap-2'>
-          <StarsReview />
-        </div>
-        <a href='' className='text-red-500'>
-          Write a Review
-        </a>
-      </aside>
+      <SideRating store={store} />
     </main>
   );
 };

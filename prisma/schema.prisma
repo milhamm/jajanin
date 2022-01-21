@@ -49,6 +49,8 @@ model User {
   stores        Store[]
   reviews       Review[]
   votes         VoteReview[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt @default(now())
 }
 
 model VerificationToken {
@@ -77,6 +79,8 @@ model Store {
   reviews         Review[]
   photos          Photo[]
   menus           Menu[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt @default(now())
 }
 
 model Review {
@@ -88,6 +92,8 @@ model Review {
   rating      Int     
   comment     String
   votes       VoteReview[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
 }
 
 model VoteReview {
@@ -96,6 +102,8 @@ model VoteReview {
   review    Review  @relation(fields: [review_id], references: [id], onDelete: Cascade)
   user_id   String
   user      User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
   @@map("Vote_Review")
 }
 
@@ -104,6 +112,8 @@ model Photo {
   store_id  String
   store     Store @relation(fields: [store_id], references: [id], onDelete: Cascade)
   photos    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
 }
 
 model Menu {
@@ -112,6 +122,8 @@ model Menu {
   store       Store @relation(fields: [store_id], references: [id], onDelete: Cascade)
   menu_type   String
   image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
   list_menus  ListMenu[]
 }
 
@@ -123,6 +135,8 @@ model ListMenu {
   image     String @default("")
   price     Int 
   detail    String @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 
   @@map("List_Menu")
 }

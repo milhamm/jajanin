@@ -17,7 +17,7 @@ const GalleryItem = ({ srcImage, text }: GalleryItemProps) => {
       />
       {text ? (
         <div className='absolute bg-black/50 w-full h-full place-items-center grid'>
-          <p className='z-50 hover:cursor-pointer'>{text}</p>
+          <p className='z-10 hover:cursor-pointer'>{text}</p>
         </div>
       ) : null}
     </div>
