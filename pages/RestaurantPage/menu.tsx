@@ -4,7 +4,16 @@ import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 const menu = () => {
   return (
     <>
-      <RestaurantPageHeader />
+      <RestaurantPageHeader
+        name='Steak'
+        photos={[
+          {
+            photos:
+              "https://media.discordapp.net/attachments/822793364587151400/933346174834978886/6054801497f35.png",
+            store_id: "Steak",
+          },
+        ]}
+      />
       <main className='container mt-5 flex gap-4'>
         <section className='w-full'>
           <div className='flex justify-between items-center'>
