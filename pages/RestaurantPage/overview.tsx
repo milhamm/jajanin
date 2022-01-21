@@ -3,11 +3,12 @@ import { RiArrowRightSFill } from "react-icons/ri";
 import { BiCheckCircle, BiXCircle } from "react-icons/bi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { RiDirectionFill } from "react-icons/ri";
+import { detailStoreMock } from "../../mocks/data";
 
 const overview = () => {
   return (
     <>
-      <RestaurantPageHeader store={null} />
+      <RestaurantPageHeader store={detailStoreMock.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}

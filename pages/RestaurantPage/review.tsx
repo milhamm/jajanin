@@ -2,11 +2,12 @@ import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { FaStar, FaRegThumbsUp, FaRegCommentDots } from "react-icons/fa";
 import { VscEdit } from "react-icons/vsc";
 import Image from "next/image";
+import { detailStoreMock } from "../../mocks/data";
 
 const review = () => {
   return (
     <>
-      <RestaurantPageHeader store={null} />
+      <RestaurantPageHeader store={detailStoreMock.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='flex flex-col gap-4'>
           {/* Restaurant Reviews */}

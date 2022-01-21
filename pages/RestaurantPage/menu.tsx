@@ -1,10 +1,11 @@
 import MenuList from "../../components/MenuList";
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
+import { detailStoreMock } from "../../mocks/data";
 
 const menu = () => {
   return (
     <>
-      <RestaurantPageHeader store={null} />
+      <RestaurantPageHeader store={detailStoreMock.data} />
       <main className='container mt-5 flex gap-4'>
         <section className='w-full'>
           <div className='flex justify-between items-center'>
