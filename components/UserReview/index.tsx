@@ -1,39 +1,39 @@
 import { FaStar, FaRegThumbsUp } from "react-icons/fa";
 import { VscEdit } from "react-icons/vsc";
 import Image from "next/image";
+import { ReviewWithUser } from "../../types/store";
 
-const UserReview = () => {
+type UserReviewProps = {
+  review: ReviewWithUser;
+};
+
+const UserReview = ({ review }: UserReviewProps) => {
   return (
     <>
       <div className='flex items-center gap-3'>
         <div className='w-[44px] h-[44px] rounded-full overflow-hidden bg-blue-500 relative'>
-          <Image src='/image/levi.jpg' objectFit='cover' layout='fill' />
+          <Image
+            src={review.user.image as string}
+            objectFit='cover'
+            layout='fill'
+            alt='Fill User'
+          />
         </div>
         <div>
-          <h5 className='font-bold'>Levi Ackerman</h5>
+          <h5 className='font-bold'>{review.user.name}</h5>
         </div>
       </div>
       <div className='flex items-center gap-2'>
         <div className='flex items-center gap-1 bg-teal-400 text-white w-fit px-2 py-1 rounded-lg'>
-          <p>5</p>
+          <p>{review.rating}</p>
           <FaStar className='text-[0.65rem]' />
         </div>
         <div>
           <p className='text-sm text-gray-400'>4 months ago</p>
         </div>
       </div>
-      <div>
-        <p className='text-gray-500 text-justify'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ea
-          voluptates architecto magni totam neque laudantium perferendis
-          inventore dolorum natus a mollitia repudiandae molestias quisquam
-          exercitationem voluptatum nemo amet minima, esse eos? Quasi, eius
-          natus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Voluptatem excepturi nobis sed et est. Dolores esse velit maxime ipsa
-          deserunt. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Excepturi sunt ex non vitae optio maiores eligendi ducimus quod earum
-          quae.
-        </p>
+      <div className='w-full'>
+        <p className='text-gray-500 text-justify'>{review.comment}</p>
       </div>
       <div className='flex gap-2 text-gray-500 text-sm'>
         <a href=''>0 Votes for helpful</a>

@@ -31,7 +31,6 @@ body {
   border: none !important;
   font-size: 14px;
   overflow: hidden;
-  gap: 2rem !important;
 }
 
 .rc-tabs-nav-list {

@@ -119,7 +119,9 @@ model ListMenu {
   menu_id   String
   menu      Menu @relation(fields: [menu_id], references: [id], onDelete: Cascade)
   name      String
-  price     Int
+  image     String @default("")
+  price     Int 
+  detail    String @default("")
 
   @@map("List_Menu")
 }

@@ -5,8 +5,9 @@ import useStore from "../../hooks/useStore";
 import Error from "next/error";
 import Tabs, { TabPane } from "rc-tabs";
 import "rc-tabs/assets/index.css";
-import SideInfo from "../../components/SideInfo";
 import OverviewSection from "../../components/Detail/Overview";
+import MenuSection from "../../components/Detail/MenuSection";
+import ReviewSection from "../../components/Detail/ReviewSection";
 
 const RestaurantPage = () => {
   const router = useRouter();
@@ -31,30 +32,28 @@ const RestaurantPage = () => {
   return (
     <>
       <RestaurantPageHeader store={data} />
-      <main className='container mt-5 flex gap-8 mobile:flex-col laptop:flex-row laptop:mb-5'>
-        <section className='flex flex-col grow gap-5'>
-          <Tabs defaultActiveKey='1' onChange={() => {}}>
-            <TabPane tab='Overview' key='1'>
+      <main className='container'>
+        <Tabs defaultActiveKey='1' onChange={() => {}}>
+          <TabPane tab='Overview' key='1'>
+            <section className='flex flex-col grow gap-5'>
               <OverviewSection
                 avg={data.average_cost}
                 menus={data.menus}
                 more_info={data.more_info}
+                address={data.address}
+                long={data.longitude}
+                lat={data.latitude}
+                phone={data.phone_number}
               />
-            </TabPane>
-            <TabPane tab='Reviews' key='2'>
-              aaaa
-            </TabPane>
-            <TabPane tab='Menu' key='3'>
-              aaaa
-            </TabPane>
-          </Tabs>
-        </section>
-        <SideInfo
-          phone={store.data.phone_number}
-          address={store.data.address}
-          lat={store.data.latitude}
-          long={store.data.longitude}
-        />
+            </section>
+          </TabPane>
+          <TabPane tab='Reviews' key='2'>
+            <ReviewSection store={data} />
+          </TabPane>
+          <TabPane tab='Menu' key='3'>
+            <MenuSection menus={data.menus} />
+          </TabPane>
+        </Tabs>
       </main>
     </>
   );
