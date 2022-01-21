@@ -10,7 +10,7 @@ const overview = () => {
   return (
     <>
       <RestaurantPageHeader store={detailStoreMock.data} />
-      <main className='container mt-5 flex gap-4 mobile:flex-col'>
+      <main className='container mt-5 flex gap-4 mobile:flex-col laptop:flex-row laptop:mb-5'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
           <div className='flex justify-between items-centered mb-2'>
@@ -20,11 +20,7 @@ const overview = () => {
               <RiArrowRightSFill />
             </a>
           </div>
-          <div className='grid grid-cols-4 gap-4 mobile:grid-cols-2'>
-            {/* <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' />
-            <Menu menuName='Beverages' /> */}
-            {/* <Menu menu={detailStoreMock?.data?.menus[0]} /> */}
+          <div className='grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3'>
             {detailStoreMock.data?.menus.map((menu, index) => {
               return <Menu menu={menu} key={index} />;
             })}
@@ -66,14 +62,17 @@ const overview = () => {
             <div>Maps</div>
             <p>Jl. P.H.H. Mustofa No. 31, Surapati, Bandung</p>
             <div className='flex gap-4 mt-4'>
-              <div className='flex justify-center items-center gap-2 border px-2 rounded-lg'>
-                <MdOutlineContentCopy />
-                <button>Copy</button>
-              </div>
-              <div className='flex justify-center items-center gap-2 border px-2 py-1 rounded-lg'>
-                <RiDirectionFill />
-                <button>Direction</button>
-              </div>
+              <button className='flex justify-center items-center gap-2 border border-teal-400 py-1 rounded-lg active:border-transparent active:bg-teal-400'>
+                <p className='text-teal-400 active:text-white flex items-center px-2 gap-1'>
+                  <MdOutlineContentCopy />
+                  Copy
+                </p>
+              </button>
+              <button className='flex justify-center items-center gap-2 border border-red-500 py-1 rounded-lg active:border-transparent active:bg-red-500 active:text-white'>
+                <p className='text-red-500 active:text-white flex items-center px-2 gap-1'>
+                  <RiDirectionFill /> Direction
+                </p>
+              </button>
             </div>
           </div>
         </aside>
