@@ -31,15 +31,14 @@ const Maps = ({ lat, long, address }: MapProps) => {
   }, []);
 
   return (
-    <div className='mobile:text-sm'>
+    <div className='flex flex-col gap-2 mobile:text-sm'>
+      <p className='font-semibold text-lg'>Direction</p>
       <div className='mb-4 relative'>
         <div
           className='h-[200px] w-full rounded-xl'
           ref={mapContainerRef}
         ></div>
       </div>
-      <p className='font-semibold text-lg mobile:text-base'>Direction</p>
-      <div>Maps</div>
       <p>{address}</p>
       <div className='flex gap-4 mt-4'>
         <button
