@@ -16,6 +16,8 @@ export const detailStoreMock: StoreDetailResponse = {
     latitude: 1.1,
     slug: "asmoking-restaurant",
     more_info: "Smoking,Toilet",
+    open_time: 0,
+    close_time: 0,
     reviews: [
       {
         id: "ckyk97qzn008120d6f3gkm98z",
@@ -60,6 +62,8 @@ export const detailStoreMock: StoreDetailResponse = {
         id: "ckylnbi460001hcd6x3xnmndb",
         store_id: "ckyiz33es0000mwfyj463ha20",
         menu_type: "Beverages",
+        image:
+          "https://media.discordapp.net/attachments/687536035634085951/931200158115446854/271803467_3189990104601469_2670958189705939664_n.png?width=506&height=676",
         list_menus: [],
       },
     ],
