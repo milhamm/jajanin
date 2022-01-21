@@ -1,13 +1,13 @@
 import { useRouter } from "next/dist/client/router";
 import * as React from "react";
 import { BiCheckCircle } from "react-icons/bi";
-import { MdOutlineContentCopy } from "react-icons/md";
-import { RiArrowRightSFill, RiDirectionFill } from "react-icons/ri";
-import Menu from "../../components/Menu";
+import { RiArrowRightSFill } from "react-icons/ri";
 import RestaurantPageHeader from "../../components/RestaurantPageHeader";
 import { currencyFormat } from "../../helper/currencyFormat";
 import useStore from "../../hooks/useStore";
 import Error from "next/error";
+import MenuGrid from "../../components/MenuGrid";
+import Maps from "../../components/Maps";
 
 const RestaurantPage = () => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const RestaurantPage = () => {
   return (
     <>
       <RestaurantPageHeader store={store.data} />
-      <main className='container mt-5 flex gap-4'>
+      <main className='container mt-5 flex gap-4 mobile:flex-col'>
         <section className='flex flex-col grow gap-5'>
           {/* Menu */}
           <div className='flex justify-between items-centered mb-2'>
@@ -41,11 +41,7 @@ const RestaurantPage = () => {
               <RiArrowRightSFill />
             </a>
           </div>
-          <div className='grid grid-cols-4 gap-4'>
-            {store.data.menus.map((menu) => (
-              <Menu key={menu.id} menu={menu} />
-            ))}
-          </div>
+          <MenuGrid menus={store.data.menus} />
           <div>
             <h3 className='font-semibold text-lg mb-2'>Average Cost</h3>
             <p>{currencyFormat(store.data.average_cost)} (approx.)</p>
@@ -69,21 +65,11 @@ const RestaurantPage = () => {
               {store.data.phone_number}
             </a>
           </div>
-          <div>
-            <p className='font-semibold text-lg'>Direction</p>
-            <div>Maps</div>
-            <p>Jl. P.H.H. Mustofa No. 31, Surapati, Bandung</p>
-            <div className='flex gap-4'>
-              <div className='flex justify-center items-center gap-2 border px-2 rounded-lg'>
-                <MdOutlineContentCopy />
-                <button>Copy</button>
-              </div>
-              <div className='flex justify-center items-center gap-2 border px-2 py-1 rounded-lg'>
-                <RiDirectionFill />
-                <button>Direction</button>
-              </div>
-            </div>
-          </div>
+          <Maps
+            address={store.data.address}
+            lat={store.data.latitude}
+            long={store.data.longitude}
+          />
         </aside>
       </main>
     </>
