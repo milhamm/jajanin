@@ -50,11 +50,10 @@ const Home: NextPage = () => {
       </div>
       {/* Collection */}
       <div className='container my-0 mt-5'>
-        <h1 className='font-bold text-2xl'>Collections</h1>
+        <h1 className='font-bold text-2xl'>Restaurant</h1>
         <div className='flex justify-between items-center mobile:text-xs laptop:text-sm'>
           <p className='w-[60%] mobile:w-[50%]'>
-            Explore curated lists of top restaurants, cafes, pubs, and bars in
-            Solo, based on trends
+            Explore curated lists of top restaurants in Solo
           </p>
           <a
             href=''
