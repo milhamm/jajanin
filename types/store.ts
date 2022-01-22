@@ -4,7 +4,7 @@ import { GenericResponse } from "./common";
 export type MenuWithListMenu = Array<Menu & { list_menus: Array<ListMenu> }>;
 
 export type ReviewWithUser = Review & {
-  user: Pick<User, "name" | "image">;
+  user: Pick<User, "name" | "image" | "id">;
   _count: { votes: number };
 };
 
