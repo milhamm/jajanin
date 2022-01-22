@@ -5,16 +5,17 @@ import { ReviewWithUser } from "../../types/store";
 import dayjs from "dayjs";
 import RelativeTime from "dayjs/plugin/relativeTime";
 import { useSession } from "next-auth/react";
+import useReview from "../../hooks/useReview";
 dayjs.extend(RelativeTime);
 
 type UserReviewProps = {
   review: ReviewWithUser;
+  slug: string;
 };
 
-const UserReview = ({ review }: UserReviewProps) => {
+const UserReview = ({ review, slug }: UserReviewProps) => {
   const { data: session } = useSession() as any;
-
-  console.log(session);
+  const { voteReview, deleteReview } = useReview(review.id, slug);
 
   return (
     <>
@@ -48,11 +49,27 @@ const UserReview = ({ review }: UserReviewProps) => {
       <div className='flex gap-2 text-gray-500 text-sm'>
         <a href=''>{review._count.votes} Votes for helpful</a>
       </div>
-      <div className='flex gap-4 text-sm text-gray-500 mb-5'>
-        <button className='flex items-center gap-2 hover:text-teal-400'>
-          <FaRegThumbsUp />
-          Helpful
-        </button>
+      <div className='flex gap-4 text-sm  mb-5'>
+        {session?.user?.id === review.user.id && (
+          <button
+            className={`flex items-center gap-2  ${
+              review.votes.length > 0
+                ? "text-teal-400 hover:text-gray-500"
+                : "text-gray-500 hover:text-teal-400"
+            }`}
+            onClick={async () => {
+              if (review.votes.length === 0) {
+                await voteReview();
+              } else {
+                await deleteReview();
+              }
+            }}
+          >
+            <FaRegThumbsUp />
+            Helpful
+          </button>
+        )}
+
         {session?.user?.id === review.user.id && (
           <button className='flex items-center gap-2 hover:text-red-500'>
             <VscEdit />

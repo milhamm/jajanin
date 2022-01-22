@@ -1,8 +1,8 @@
 import * as React from "react";
 import { IoLocationSharp, IoSearch } from "react-icons/io5";
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+// import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import type { NextPage } from "next";
-import RestaurantReview from "../components/RestaurantReview";
+// import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
 import DefaultLayout from "../components/Layout/DefaultLayout";
 import useStore from "../hooks/useStore";
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
         </div>
       </div>
       {/* Slide Review */}
-      <div className='mx-auto my-0 mt-16 mobile:w-full mobile:container tablet:px-[1rem] laptop:w-[900px]'>
+      {/* <div className='mx-auto my-0 mt-16 mobile:w-full mobile:container tablet:px-[1rem] laptop:w-[900px]'>
         <div className=' flex items-center justify-between mx-auto gap-[60px] mobile:flex-col laptop:flex-row'>
           <div className='h-[300px] w-[300px] rounded-lg shadow-lg shadow-black/15'></div>
           <div className='w-[450px] rounded-lg shadow-lg shadow-gray-300/50 mobile:w-full mobile:flex mobile:flex-col laptop:w-[450px]'>
@@ -69,9 +69,9 @@ const Home: NextPage = () => {
             <RestaurantReview restaurantName='HISANA' customerName={"Raka"} />
             <RestaurantReview restaurantName='KFC' customerName={"Aang"} />
           </div>
-        </div>
-        {/* Slide Review - Arrow button */}
-        <div className='flex items-center py-2 gap-4 mobile:justify-center laptop:justify-end'>
+        </div> */}
+      {/* Slide Review - Arrow button */}
+      {/* <div className='flex items-center py-2 gap-4 mobile:justify-center laptop:justify-end'>
           <button>
             <BsArrowLeftShort className='fill-current text-red-500 text-2xl rounded-full border border-red-500 hover:bg-red-500 hover:text-white hover:border-transparent' />
           </button>
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
             <BsArrowRightShort className='fill-current text-red-500 text-2xl rounded-full border border-red-500 hover:bg-red-500 hover:text-white hover:border-transparen' />
           </button>
         </div>
-      </div>
+      </div> */}
       {/* Collection */}
       <div className='container my-0 mt-5'>
         <h1 className='font-bold text-2xl'>Restaurant</h1>

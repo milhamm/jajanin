@@ -1,5 +1,6 @@
 import { Store } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getSession } from "next-auth/react";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
 import { genericException, genericResponse } from "../../../helper/response";
@@ -12,6 +13,8 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       const id = req.query.id as string;
+      const session = (await getSession({ req })) as any;
+
       const store = await prisma.store.findUnique({
         where: {
           slug: id,
@@ -22,6 +25,11 @@ export default async function handler(
               createdAt: "desc",
             },
             include: {
+              votes: {
+                where: {
+                  user_id: session?.user.id,
+                },
+              },
               user: {
                 select: {
                   name: true,
@@ -44,6 +52,7 @@ export default async function handler(
           },
         },
       });
+
       if (store) {
         const aggregations = await prisma.review.aggregate({
           where: {
