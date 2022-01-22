@@ -1,31 +1,63 @@
+import * as React from "react";
 import { IoLocationSharp, IoSearch } from "react-icons/io5";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import type { NextPage } from "next";
 import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
-
 import DefaultLayout from "../components/Layout/DefaultLayout";
+import useStore from "../hooks/useStore";
+import { useDebounce } from "../hooks/useDebounce";
+import Link from "next/link";
 
 const Home: NextPage = () => {
+  const [searchText, setSearchedText] = React.useState("");
+  const debouncedValue = useDebounce<string>(searchText, 500);
+  const { searched, stores } = useStore({ search: debouncedValue });
+
   return (
     <DefaultLayout isHome>
       <div className='flex items-center justify-start flex-col w-full h-[320px] bg-red-500 pt-10'>
         <h1 className='font-["Mazzard"] text-[70px] text-white'>Jajanin</h1>
         <p className='text-white'>Discover the best food & drinks</p>
         {/* Header - Search Bar */}
-        <div className='flex items-center gap-4 bg-white rounded-lg p-1 mt-4 mobile:w-[80%] laptop:w-[715px]'>
+        <div className='flex items-center gap-4 bg-white rounded-lg p-1 mt-4 mobile:w-[80%] laptop:w-[715px] relative'>
           <div className='flex items-center w-[100px] gap-2'>
             <IoLocationSharp className='text-2xl fill-current text-red-500 mobile:text-xl' />{" "}
             Solo
           </div>
-          <div className='flex items-center grow w-full gap-2'>
+          <div className='flex items-center grow w-full gap-2 '>
             <IoSearch className='text-2xl fill-current text-red-500 mobile:text-xl' />
             <input
+              onChange={(e) => setSearchedText(e.target.value)}
               type='text'
               placeholder='Search for restaurant, cuisine or a dish'
               className='p-2 w-full focus:ring-0 focus:border-none focus:outline-none'
             />
           </div>
+          {debouncedValue !== "" && searched ? (
+            <div className='absolute w-full bg-white shadow-lg inset-x-0 top-[4.2rem] rounded p-2'>
+              {searched?.data.length > 0 ? (
+                searched?.data.map((store) => (
+                  <Link href={`/store/${store.slug}`} key={store.id}>
+                    <a>
+                      <div className='w-full flex gap-4 hover:bg-gray-100 p-4 cursor-pointer rounded-lg'>
+                        <div className='w-full grow'>
+                          <p className='font-bold'>{store.store_name}</p>
+                          <p>{store.address}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                ))
+              ) : (
+                <div className='w-full flex gap-4 p-4'>
+                  <div className='w-full'>
+                    <p className='text-center'>Not Found</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
       {/* Slide Review */}
@@ -63,10 +95,11 @@ const Home: NextPage = () => {
           </a>
         </div>
         <div className='grid gap-3 mt-8 mb-4 mobile:grid-cols-2 desktop:grid-cols-4'>
-          <CollectionCard collectionName='Trending this week' />
-          <CollectionCard collectionName='Trending this week' />
-          <CollectionCard collectionName='Trending this week' />
-          <CollectionCard collectionName='Trending this week' />
+          {stores?.data
+            ? stores.data.map((store) => (
+                <CollectionCard store={store} key={store.id} />
+              ))
+            : null}
         </div>
       </div>
       {/* Footer */}

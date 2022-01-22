@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -81,6 +82,9 @@ model Store {
   menus           Menu[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt @default(now())
+
+  @@fulltext([store_name])
+  @@fulltext([store_name, address])
 }
 
 model Review {
