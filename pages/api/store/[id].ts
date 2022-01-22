@@ -26,6 +26,7 @@ export default async function handler(
                 select: {
                   name: true,
                   image: true,
+                  id: true,
                 },
               },
               _count: {

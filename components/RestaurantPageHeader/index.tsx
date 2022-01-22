@@ -44,7 +44,7 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
               href=''
               className='flex items-center gap-1 bg-teal-400 text-white p-2 rounded-lg mobile:py-1'
             >
-              <p className='font-bold'>{store.average_rating}</p>
+              <p className='font-bold'>{store.average_rating?.toFixed(1)}</p>
               <FaStar className='text-xs text-yellow-200' />
             </a>
             <a
@@ -70,10 +70,10 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
             </p>
           </div>
         </div>
-        <button className='flex justify-center items-center text-xs hover:text-white gap-2 mt-5 hover:bg-red-500 rounded-lg h-[25px] p-2 bg-white text-red-500 border border-red-500'>
+        {/* <button className='flex justify-center items-center text-xs hover:text-white gap-2 mt-5 hover:bg-red-500 rounded-lg h-[25px] p-2 bg-white text-red-500 border border-red-500'>
           <FaStar />
           <p>Add Review</p>
-        </button>
+        </button> */}
       </div>
     </>
   );

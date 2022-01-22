@@ -2,12 +2,20 @@ import { FaStar, FaRegThumbsUp } from "react-icons/fa";
 import { VscEdit } from "react-icons/vsc";
 import Image from "next/image";
 import { ReviewWithUser } from "../../types/store";
+import dayjs from "dayjs";
+import RelativeTime from "dayjs/plugin/relativeTime";
+import { useSession } from "next-auth/react";
+dayjs.extend(RelativeTime);
 
 type UserReviewProps = {
   review: ReviewWithUser;
 };
 
 const UserReview = ({ review }: UserReviewProps) => {
+  const { data: session } = useSession() as any;
+
+  console.log(session);
+
   return (
     <>
       <div className='flex items-center gap-3'>
@@ -29,24 +37,28 @@ const UserReview = ({ review }: UserReviewProps) => {
           <FaStar className='text-[0.65rem]' />
         </div>
         <div>
-          <p className='text-sm text-gray-400'>4 months ago</p>
+          <p className='text-sm text-gray-400'>
+            {dayjs(review.createdAt).fromNow()}
+          </p>
         </div>
       </div>
       <div className='w-full'>
         <p className='text-gray-500 text-justify'>{review.comment}</p>
       </div>
       <div className='flex gap-2 text-gray-500 text-sm'>
-        <a href=''>0 Votes for helpful</a>
+        <a href=''>{review._count.votes} Votes for helpful</a>
       </div>
       <div className='flex gap-4 text-sm text-gray-500 mb-5'>
         <button className='flex items-center gap-2 hover:text-teal-400'>
           <FaRegThumbsUp />
           Helpful
         </button>
-        <button className='flex items-center gap-2 hover:text-red-500'>
-          <VscEdit />
-          Edit
-        </button>
+        {session?.user?.id === review.user.id && (
+          <button className='flex items-center gap-2 hover:text-red-500'>
+            <VscEdit />
+            Edit
+          </button>
+        )}
       </div>
     </>
   );
