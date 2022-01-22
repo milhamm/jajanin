@@ -11,9 +11,9 @@ const useReview = (review_id: string, slug: string) => {
     } catch (error) {}
   };
 
-  const deleteReview = async () => {
+  const deleteReview = async (id: string) => {
     try {
-      await api.post(`/review/${review_id}/vote`);
+      await api.delete(`/review/${review_id}/vote/${id}`);
       mutate(slug ? `/store/${slug}` : null);
     } catch (error) {}
   };
