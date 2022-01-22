@@ -50,7 +50,7 @@ const UserReview = ({ review, slug }: UserReviewProps) => {
         <a href=''>{review._count.votes} Votes for helpful</a>
       </div>
       <div className='flex gap-4 text-sm  mb-5'>
-        {session?.user?.id === review.user.id && (
+        {session?.user?.id && (
           <button
             className={`flex items-center gap-2  ${
               review.votes.length > 0
@@ -61,7 +61,7 @@ const UserReview = ({ review, slug }: UserReviewProps) => {
               if (review.votes.length === 0) {
                 await voteReview();
               } else {
-                await deleteReview();
+                await deleteReview(review.votes[0].id);
               }
             }}
           >
