@@ -14,7 +14,7 @@ const ReviewSection = ({ store }: ReviewSectionProps) => {
           <h3 className='font-semibold text-lg'>{store?.store_name} Reviews</h3>
         </div>
         {store?.reviews.map((review) => (
-          <UserReview review={review} key={review.id} />
+          <UserReview review={review} key={review.id} slug={store?.slug} />
         ))}
       </section>
       <SideRating store={store} />

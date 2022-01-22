@@ -9,15 +9,16 @@ type StoreType = {
 };
 
 const useStore = ({ slug, search }: StoreType = {}) => {
-  const { data: stores } = useSWR<PlacesResponse>(
+  const { data: stores, mutate: updateAllStore } = useSWR<PlacesResponse>(
     !slug ? "/stores" : null,
     fetcher
   );
 
-  const { data, error } = useSWR<StoreDetailResponse>(
-    slug ? `/store/${slug}` : null,
-    fetcher
-  );
+  const {
+    data,
+    error,
+    mutate: updateSingleStore,
+  } = useSWR<StoreDetailResponse>(slug ? `/store/${slug}` : null, fetcher);
 
   const { data: searched } = useSWR<PlacesResponse>(
     !slug && search !== "" ? `/stores?search=${search}` : null,
@@ -29,6 +30,8 @@ const useStore = ({ slug, search }: StoreType = {}) => {
     stores: stores,
     store: data,
     error: error,
+    updateAllStore,
+    updateSingleStore,
   };
 };
 
