@@ -14,7 +14,7 @@ const RestaurantPage = () => {
   const router = useRouter();
   const slug = router.query.slug as string;
 
-  const { store, error } = useStore(slug);
+  const { store, error } = useStore({ slug });
 
   if (error) {
     return <Error statusCode={404} />;

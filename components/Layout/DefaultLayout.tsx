@@ -10,7 +10,11 @@ type DefaultLayoutProps = {
 const DefaultLayout = ({ children, isHome = false }: DefaultLayoutProps) => {
   return (
     <>
-      <div className={`${isHome ? "bg-red-500" : "bg-white container"} w-full`}>
+      <div
+        className={`${
+          isHome ? "bg-red-500" : "bg-white container"
+        } w-full z-50 relative`}
+      >
         <Header isHome={isHome} />
       </div>
       {children}

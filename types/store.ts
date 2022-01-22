@@ -18,4 +18,5 @@ export type StoreDetailType =
     })
   | null;
 
+export type StoreResponse = GenericResponse<Array<Store>>;
 export type StoreDetailResponse = GenericResponse<StoreDetailType>;

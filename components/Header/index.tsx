@@ -4,6 +4,8 @@ import { HiOutlineMenu } from "react-icons/hi";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
+import useStore from "../../hooks/useStore";
+import { useDebounce } from "../../hooks/useDebounce";
 
 type HeaderProps = {
   isHome?: boolean;
@@ -56,6 +58,9 @@ const Profile = ({ image, name }: ProfileProps) => {
 
 const Header = ({ isHome = false }: HeaderProps) => {
   const { data: session, status } = useSession();
+  const [searchText, setSearchedText] = React.useState("");
+  const debouncedValue = useDebounce<string>(searchText, 500);
+  const { searched } = useStore({ search: debouncedValue });
 
   return (
     <div className='flex justify-between items-center gap-5 pt-5'>
@@ -64,16 +69,46 @@ const Header = ({ isHome = false }: HeaderProps) => {
           <button className='laptop:hidden'>
             <HiOutlineMenu className='text-red-500 text-[2rem]' />
           </button>
-          <h1 className='font-["Mazzard"] text-[2em] text-red-500 mobile:hidden laptop:block'>
-            Jajanin
-          </h1>
-          <div className='w-[700px] flex items-center gap-2 rounded-lg border-1 px-3 py-1 shadow-sm shadow-gray-200 laptop:w-[50%] desktop:w-[700px]'>
+          <Link href='/'>
+            <a>
+              <h1 className='font-["Mazzard"] text-[2em] text-red-500 mobile:hidden laptop:block'>
+                Jajanin
+              </h1>
+            </a>
+          </Link>
+          <div className='w-[700px] flex items-center gap-2 rounded-lg border-1 px-3 py-1 shadow-sm shadow-gray-200 laptop:w-[50%] desktop:w-[700px] relative'>
             <IoSearch className='text-2xl mobile:text-base' />
             <input
+              onChange={(e) => setSearchedText(e.target.value)}
               type='text'
               placeholder='Search for restaurant, cuisine or a dish'
               className='p-2 w-full rounded-lg focus:ring-0 focus:border-none focus:outline-none mobile:text-base'
             />
+
+            {debouncedValue !== "" && searched ? (
+              <div className='absolute w-full bg-white shadow-lg inset-x-0 top-[4.2rem] rounded p-2'>
+                {searched?.data.length > 0 ? (
+                  searched?.data.map((store) => (
+                    <Link href={`/store/${store.slug}`} key={store.id}>
+                      <a>
+                        <div className='w-full flex gap-4 hover:bg-gray-100 p-4 cursor-pointer rounded-lg'>
+                          <div className='w-full grow'>
+                            <p className='font-bold'>{store.store_name}</p>
+                            <p>{store.address}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
+                  ))
+                ) : (
+                  <div className='w-full flex gap-4 p-4'>
+                    <div className='w-full'>
+                      <p className='text-center'>Not Found</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : null}
           </div>
           {status === "loading" ? (
             <p>Loading . . .</p>

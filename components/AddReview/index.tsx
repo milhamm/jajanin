@@ -37,6 +37,8 @@ const AddReview = ({
       await api.post(`/store/${store?.id}/reviews`, payload);
       mutate(`/store/${store?.slug}`);
       handleClose();
+      setText("");
+      handleOnChange(0);
     } catch (error) {
       console.log(error);
     } finally {

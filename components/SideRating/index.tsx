@@ -64,7 +64,9 @@ const SideRating = ({ store }: { store: StoreDetailType }) => {
       </p>
       <Modal
         isOpen={isOpen}
-        className='w-full p-0 m-0 overflow-none z-20'
+        className='w-full p-0 m-0 overflow-none z-[999]'
+        // overlayClassName='z-[999]'
+        style={{ overlay: { zIndex: 999 } }}
         onRequestClose={() => setIsOpen(false)}
         preventScroll
       >
