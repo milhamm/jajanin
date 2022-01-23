@@ -11,9 +11,9 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       const id = req.query.id as string;
-      const user: User | null = await prisma.user.findFirst({
+      const user: User | null = await prisma.user.findUnique({
         where: {
-          id: id,
+          email: id,
         },
       });
       res.json(genericResponse<User | null>(true, 200, user));

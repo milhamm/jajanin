@@ -1,6 +1,5 @@
 import * as React from "react";
 import { IoLocationSharp, IoSearch } from "react-icons/io5";
-// import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import type { NextPage } from "next";
 // import RestaurantReview from "../components/RestaurantReview";
 import CollectionCard from "../components/CollectionCard";
@@ -40,7 +39,7 @@ const Home: NextPage = () => {
                 searched?.data.map((store) => (
                   <Link href={`/store/${store.slug}`} key={store.id}>
                     <a>
-                      <div className='w-full flex gap-4 hover:bg-gray-100 p-4 cursor-pointer rounded-lg'>
+                      <div className='w-full flex gap-4 hover:bg-gray-100 p-4 cursor-pointer rounded-lg '>
                         <div className='w-full grow'>
                           <p className='font-bold'>{store.store_name}</p>
                           <p>{store.address}</p>
@@ -94,7 +93,7 @@ const Home: NextPage = () => {
             All collections in Solo
           </a>
         </div>
-        <div className='grid gap-3 mt-8 mb-4 mobile:grid-cols-2 desktop:grid-cols-4'>
+        <div className='grid gap-3 mt-8 mb-4 mobile:grid-cols-2 desktop:grid-cols-4 min-h-[200px] md:min-h-[400px]'>
           {stores?.data
             ? stores.data.map((store) => (
                 <CollectionCard store={store} key={store.id} />

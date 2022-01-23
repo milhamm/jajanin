@@ -6,6 +6,7 @@ import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import useStore from "../../hooks/useStore";
 import { useDebounce } from "../../hooks/useDebounce";
+import Sidebar from "../Sidebar";
 
 type HeaderProps = {
   isHome?: boolean;
@@ -26,13 +27,17 @@ const Profile = ({ image, name }: ProfileProps) => {
       onMouseLeave={() => setIsOpen(false)}
     >
       <button className='flex gap-2 text-gray-300 bg-red-500 p-2 rounded-lg items-center mobile:hidden laptop:flex'>
-        <div className='w-[30px] h-[30px] rounded-full overflow-hidden bg-blue-500 relative'>
-          <Image
-            src={image}
-            objectFit='cover'
-            layout='fill'
-            alt='profilPicture'
-          />
+        <div className='w-[30px] h-[30px] rounded-full overflow-hidden bg-gray-100 relative grid place-items-center text-red-500'>
+          {image ? (
+            <Image
+              src={image}
+              objectFit='cover'
+              layout='fill'
+              alt='profilPicture'
+            />
+          ) : (
+            <span className='p-0 m-0'>{name[0].toUpperCase()}</span>
+          )}
         </div>
         <div>
           <h5 className='font-medium text-white truncate max-w-[200px]'>
@@ -62,11 +67,24 @@ const Header = ({ isHome = false }: HeaderProps) => {
   const debouncedValue = useDebounce<string>(searchText, 500);
   const { searched } = useStore({ search: debouncedValue });
 
+  const [show, setShow] = React.useState(false);
+
   return (
     <div className='flex justify-between items-center gap-5 pt-5'>
+      <Sidebar
+        show={show}
+        onClose={() => setShow(false)}
+        name={session?.user?.name}
+        image={session?.user?.image}
+      />
       {!isHome ? (
         <>
-          <button className='laptop:hidden'>
+          <button
+            className='laptop:hidden'
+            onClick={() => {
+              setShow(true);
+            }}
+          >
             <HiOutlineMenu className='text-red-500 text-[2rem]' />
           </button>
           <Link href='/'>
@@ -130,7 +148,11 @@ const Header = ({ isHome = false }: HeaderProps) => {
         </>
       ) : (
         <div className='container flex items-center gap-4 p-5 mobile:justify-start laptop:justify-end'>
-          <button>
+          <button
+            onClick={() => {
+              setShow(true);
+            }}
+          >
             <HiOutlineMenu className='text-white text-[2rem] laptop:hidden' />
           </button>
           {status === "authenticated" ? (
@@ -149,9 +171,13 @@ const Header = ({ isHome = false }: HeaderProps) => {
                   </button>
                 </a>
               </Link>
-              <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 mobile:hidden laptop:block'>
-                Sign up
-              </button>
+              <Link href='/auth/register'>
+                <a>
+                  <button className='text-white font-semibold px-3 py-1 rounded-lg hover:bg-white hover:text-red-500 mobile:hidden laptop:block'>
+                    Sign Up
+                  </button>
+                </a>
+              </Link>
             </>
           )}
         </div>
