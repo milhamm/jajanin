@@ -12,9 +12,9 @@ const MenuSection = ({ menus }: MenuSectionProps) => {
         <h3 className='font-semibold mobile:text-base laptop:text-lg'>
           Restaurant Menu
         </h3>
-        <button className='text-red-500 mobile:text-xs laptop:text-base border border-red-500 font-black hover:bg-red-500 hover:text-white hover:border-transparent px-2 py-1 rounded-lg'>
+        {/* <button className='text-red-500 mobile:text-xs laptop:text-base border border-red-500 font-black hover:bg-red-500 hover:text-white hover:border-transparent px-2 py-1 rounded-lg'>
           Add menu +
-        </button>
+        </button> */}
       </div>
       <div className='grid mt-10 mb-10 gap-4 mobile:grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3'>
         {menus.map((menu) => (

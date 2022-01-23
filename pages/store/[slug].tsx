@@ -34,7 +34,7 @@ const RestaurantPage = () => {
   return (
     <DefaultLayout>
       <RestaurantPageHeader store={data} />
-      <main className='container'>
+      <main className='container min-h-[500px]'>
         <Tabs
           defaultActiveKey={defaultKey ?? "1"}
           onChange={(key: string) => {

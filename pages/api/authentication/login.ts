@@ -1,4 +1,3 @@
-import { User } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../client/prisma";
 import { errorHandler } from "../../../helper/errorHandler";
@@ -14,16 +13,24 @@ export default async function handler(
       const { email, password } = req.body;
 
       try {
-        const user: User | null = await prisma.user.findFirst({
+        const user = await prisma.user.findFirst({
           where: {
             email: email,
+          },
+          select: {
+            id: true,
+            image: true,
+            phone_number: true,
+            name: true,
+            email: true,
+            password: true,
           },
         });
 
         if (user?.password) {
           const validPass = await bcrypt.compare(password, user.password);
           if (validPass) {
-            res.send(genericResponse<User | null>(true, 200, user));
+            res.send(genericResponse(true, 200, user));
           } else {
             res
               .status(401)

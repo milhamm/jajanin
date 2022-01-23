@@ -10,7 +10,7 @@ type StoreType = {
 
 const useStore = ({ slug, search }: StoreType = {}) => {
   const { data: stores, mutate: updateAllStore } = useSWR<PlacesResponse>(
-    !slug ? "/stores" : null,
+    !slug && !search ? "/stores" : null,
     fetcher
   );
 

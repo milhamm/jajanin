@@ -28,10 +28,13 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
             />
           </div>
           <div className='grid grid-rows-2 grid-cols-2 w-full gap-2 mobile:h-full'>
-            {store.photos.map((photo, idx) => (
-              <GalleryItem key={idx} srcImage={photo.photos} />
-            ))}
-            <GalleryItem srcImage='/image/steaklevel.jpg' text='View Gallery' />
+            {store.photos.map((photo, idx) =>
+              idx === store.photos.length - 1 ? (
+                <GalleryItem srcImage={photo.photos} text='View Gallery' />
+              ) : (
+                <GalleryItem key={idx} srcImage={photo.photos} />
+              )
+            )}
           </div>
         </div>
         {/* Restaurant Details */}
@@ -44,7 +47,9 @@ const RestaurantPageHeader = ({ store }: RestaurantPageHeaderProps) => {
               href=''
               className='flex items-center gap-1 bg-teal-400 text-white p-2 rounded-lg mobile:py-1'
             >
-              <p className='font-bold'>{store.average_rating?.toFixed(1)}</p>
+              <p className='font-bold'>
+                {store.average_rating ? store.average_rating?.toFixed(1) : 0}
+              </p>
               <FaStar className='text-xs text-yellow-200' />
             </a>
             <a
