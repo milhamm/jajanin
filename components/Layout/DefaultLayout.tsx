@@ -9,7 +9,7 @@ type DefaultLayoutProps = {
 
 const DefaultLayout = ({ children, isHome = false }: DefaultLayoutProps) => {
   return (
-    <>
+    <div className='relative min-h-screen pb-[120px]'>
       <div
         className={`${
           isHome ? "bg-red-500" : "bg-white container"
@@ -17,9 +17,9 @@ const DefaultLayout = ({ children, isHome = false }: DefaultLayoutProps) => {
       >
         <Header isHome={isHome} />
       </div>
-      {children}
+      <main className='mb-4'>{children}</main>
       <Footer />
-    </>
+    </div>
   );
 };
 
