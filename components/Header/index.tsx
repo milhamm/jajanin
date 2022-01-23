@@ -70,7 +70,7 @@ const Header = ({ isHome = false }: HeaderProps) => {
   const [show, setShow] = React.useState(false);
 
   return (
-    <div className='flex justify-between items-center gap-5 pt-5'>
+    <div className='flex justify-between items-center gap-5 py-5'>
       <Sidebar
         show={show}
         onClose={() => setShow(false)}

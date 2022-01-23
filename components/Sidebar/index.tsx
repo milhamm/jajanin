@@ -45,13 +45,15 @@ const Sidebar = ({ show, onClose, name, image }: SidebarProps) => {
           {name ? (
             <div className='w-full flex flex-col items-center border-b border-red-500/20 mb-5'>
               <div className='w-[100px] h-[100px] relative border-4 border-red-500 rounded-full'>
-                <Image
-                  src={image as string}
-                  layout='fill'
-                  className='rounded-full '
-                  objectFit='cover'
-                  alt={name}
-                />
+                {image ? (
+                  <Image
+                    src={image as string}
+                    layout='fill'
+                    className='rounded-full '
+                    objectFit='cover'
+                    alt={name}
+                  />
+                ) : null}
               </div>
               <p className='font-bold my-5 text-gray-500'>{name}</p>
             </div>
