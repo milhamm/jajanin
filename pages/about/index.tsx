@@ -42,36 +42,31 @@ const aboutUs = () => {
             <h1 className='font-black text-[2em] text-red-500'>
               Meet Our Team!
             </h1>
-            <div className='grid grid-cols-3 gap-5 mb-5 mobile:grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3'>
+            <div className='grid grid-cols-3 justify-items-center gap-5 mb-5 mobile:grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3'>
               <TeamCard
-                teamSourceImage='/image/ridodit.png'
-                teamPersonName='Ridho Nobelino Sabililah'
-                teamPersonPosition='CEO'
+                teamSourceImage='/image/kwasonk.png'
+                teamPersonName='Khaidir Mauladan'
+                teamPersonPosition='1301192327'
               />
               <TeamCard
                 teamSourceImage='/image/aangdit.png'
                 teamPersonName='Muhammad Ilham Mubarak'
-                teamPersonPosition='CTO'
+                teamPersonPosition='1301194276'
               />
               <TeamCard
                 teamSourceImage='/image/lepidit.png'
                 teamPersonName='Muhammad Furqon Fahlevi'
-                teamPersonPosition='Front-End Engineer'
+                teamPersonPosition='1301194214'
               />
               <TeamCard
-                teamSourceImage='/image/laldit.png'
-                teamPersonName='Hilal Ramadhan Utomo'
-                teamPersonPosition='Back-End Engineer'
+                teamSourceImage='/image/dudfruit.png'
+                teamPersonName='Putu Budi Sukarya Putra P.O.'
+                teamPersonPosition='1301194252'
               />
               <TeamCard
                 teamSourceImage='/image/handit.png'
-                teamPersonName='Muhammad Farhan Akbar'
-                teamPersonPosition='Back-End Engineer'
-              />
-              <TeamCard
-                teamSourceImage='/image/caldit.png'
-                teamPersonName='Risyad Faisal Hadi'
-                teamPersonPosition='UI/UX Designer'
+                teamPersonName='Akmal Raafid Taufiqurrahman'
+                teamPersonPosition='1301192218'
               />
             </div>
           </div>
