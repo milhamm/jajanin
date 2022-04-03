@@ -42,7 +42,7 @@ const aboutUs = () => {
             <h1 className='font-black text-[2em] text-red-500'>
               Meet Our Team!
             </h1>
-            <div className='grid grid-cols-3 justify-items-center gap-5 mb-5 mobile:grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3'>
+            <div className='grid grid-cols-2 justify-items-center gap-5 mb-5 mobile:grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-2'>
               <TeamCard
                 teamSourceImage='/image/kwasonk.png'
                 teamPersonName='Khaidir Mauladan'
@@ -62,11 +62,6 @@ const aboutUs = () => {
                 teamSourceImage='/image/dudfruit.png'
                 teamPersonName='Putu Budi Sukarya Putra P.O.'
                 teamPersonPosition='1301194252'
-              />
-              <TeamCard
-                teamSourceImage='/image/handit.png'
-                teamPersonName='Akmal Raafid Taufiqurrahman'
-                teamPersonPosition='1301192218'
               />
             </div>
           </div>
